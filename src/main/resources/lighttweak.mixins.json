@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "package": "me.kall.lighttweak.mixin",
+  "plugin": "me.kall.lighttweak.mixin.MixinDepInitializer",
+  "compatibilityLevel": "JAVA_8",
+  "overwrites": {
+    "conformVisibility": false
+  },
+  "minVersion": "0.8",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "EntityRenderDispatcherMixin",
+    "LevelRendererMixin",
+    "LivingEntityMixin",
+    "compatibility.AcceleratedEntityShadowRendererMixin",
+    "compatibility.SodiumEntityRenderDispatcherMixin"
+  ]
+}
