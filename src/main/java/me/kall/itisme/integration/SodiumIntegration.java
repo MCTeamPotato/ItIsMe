@@ -121,6 +121,7 @@ public class SodiumIntegration {
                 .setTooltip(EMPTY)
                 .setControl(option -> new SliderControl(option, 0, 255, 5, ControlValueFormatter.number()))
                 .setBinding((options, value) -> setter.accept(value), options -> getter.get())
+                .setImpact(OptionImpact.LOW)
                 .build();
     }
 

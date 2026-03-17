@@ -21,14 +21,13 @@ public class ShadowOutlineRenderer {
         SHADOW_RENDERED.set(Boolean.TRUE);
     }
 
-    private static boolean isShadowRendered() {
+    public static boolean isShadowRendered() {
         boolean rendered = SHADOW_RENDERED.get() == Boolean.TRUE;
         SHADOW_RENDERED.remove();
         return rendered;
     }
 
     public static void renderShadowOutline(PoseStack poseStack, MultiBufferSource buffer, @NotNull Entity entity, float weight, float partialTicks, LevelReader level, float size) {
-        if (!isShadowRendered()) return;
         OutlineColor shadowColor = ItIsMeConfig.getEntityShadowOutlineColor(entity);
         if (shadowColor == null) return;
         double entityX = Mth.lerp(partialTicks, entity.xOld, entity.getX());

@@ -11,7 +11,7 @@ authors = "Kall"
 description = '''
 A Minecraft mod
 '''
-#logoFile = ""
+logoFile = "logo.png"
 
 [[dependencies.itisme]]
 modId="duplicationless"
