@@ -2,10 +2,7 @@ package me.kall.itisme.integration;
 
 import com.google.common.collect.ImmutableList;
 import me.jellysquid.mods.sodium.client.gui.SodiumGameOptions;
-import me.jellysquid.mods.sodium.client.gui.options.OptionGroup;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpact;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
-import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
+import me.jellysquid.mods.sodium.client.gui.options.*;
 import me.jellysquid.mods.sodium.client.gui.options.control.ControlValueFormatter;
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
@@ -121,6 +118,7 @@ public class SodiumIntegration {
                 .setTooltip(EMPTY)
                 .setControl(option -> new SliderControl(option, 0, 255, 5, ControlValueFormatter.number()))
                 .setBinding((options, value) -> setter.accept(value), options -> getter.get())
+                .setImpact(OptionImpact.LOW)
                 .build();
     }
 

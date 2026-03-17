@@ -10,7 +10,7 @@ displayName = "ItIsMe"
 authors = "Kall"
 description = '''
 '''
-#logoFile = ""
+logoFile = "logo.png"
 
 [[dependencies.itisme]]
 modId="duplicationless"

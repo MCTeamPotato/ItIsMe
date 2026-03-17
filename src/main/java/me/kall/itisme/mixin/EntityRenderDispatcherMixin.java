@@ -75,6 +75,6 @@ public abstract class EntityRenderDispatcherMixin {
             at = @At("RETURN")
     )
     private static void renderShadowOutline(PoseStack poseStack, MultiBufferSource buffer, Entity entity, float weight, float partialTicks, LevelReader level, float size, CallbackInfo ci) {
-        ShadowOutlineRenderer.renderShadowOutline(poseStack, buffer, entity, weight, partialTicks, level, size);
+        if (ShadowOutlineRenderer.isShadowRendered() && ItIsMeConfig.entityShadowOutlineRenderable(entity)) ShadowOutlineRenderer.renderShadowOutline(poseStack, buffer, entity, weight, partialTicks, level, size);
     }
 }

@@ -20,8 +20,11 @@ public abstract class LivingEntityMixin {
     private void alwaysGlowing(@NotNull CallbackInfoReturnable<Boolean> cir) {
         if (cir.getReturnValue()) return;
         LivingEntity entity = (LivingEntity) (Object) this;
-        LocalPlayer player = Minecraft.getInstance().player;
-        if (player == null) return;
-        cir.setReturnValue(player.distanceTo(entity) <= ItIsMeConfig.OUTLINE_RENDERABLE_DIST.get());
+
+        if (ItIsMeConfig.entityOutlineRenderable(entity)) {
+            LocalPlayer player = Minecraft.getInstance().player;
+            if (player == null) return;
+            cir.setReturnValue(player.distanceTo(entity) <= ItIsMeConfig.OUTLINE_RENDERABLE_DIST.get());
+        }
     }
 }
