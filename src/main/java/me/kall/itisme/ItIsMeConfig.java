@@ -25,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = LightTweak.MOD_ID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ItIsMe.MOD_ID, value = Dist.CLIENT)
 public class ItIsMeConfig {
     public static final ModConfigSpec LIGHT_TWEAK_CONFIG;
 
