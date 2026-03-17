@@ -8,7 +8,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
@@ -61,11 +60,6 @@ public class ShadowOutlineRenderer {
         float yOffset = (float) (groundY - entityY) + 0.015f;
         poseStack.translate(0, yOffset, 0);
 
-        float radius = size;
-        if (entity instanceof Mob mob && mob.isBaby()) {
-            radius *= 0.5F;
-        }
-
         VertexConsumer lineBuffer = buffer.getBuffer(RenderType.lines());
         Matrix4f pose = poseStack.last().pose();
         int r = shadowColor.red;
@@ -80,10 +74,10 @@ public class ShadowOutlineRenderer {
             float angle1 = i * angleStep;
             float angle2 = (i + 1) * angleStep;
 
-            float x1 = Mth.cos(angle1) * radius;
-            float z1 = Mth.sin(angle1) * radius;
-            float x2 = Mth.cos(angle2) * radius;
-            float z2 = Mth.sin(angle2) * radius;
+            float x1 = Mth.cos(angle1) * size;
+            float z1 = Mth.sin(angle1) * size;
+            float x2 = Mth.cos(angle2) * size;
+            float z2 = Mth.sin(angle2) * size;
 
             lineBuffer.addVertex(pose, x1, 0, z1).setColor(r, g, b, a).setNormal(0, 1, 0);
             lineBuffer.addVertex(pose, x2, 0, z2).setColor(r, g, b, a).setNormal(0, 1, 0);
