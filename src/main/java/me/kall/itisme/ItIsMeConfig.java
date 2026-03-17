@@ -194,12 +194,16 @@ public class ItIsMeConfig {
 
     public static @Nullable OutlineColor getEntityOutlineColor(Entity entity) {
         if (entity instanceof Player) {
+            if (!PLAYER_OUTLINE_RENDERABLE.get()) return null;
             return new OutlineColor(PLAYER_OUTLINE_RED.get(), PLAYER_OUTLINE_GREEN.get(), PLAYER_OUTLINE_BLUE.get(), PLAYER_OUTLINE_ALPHA.get());
         } else if (entity.getType().is(Tags.EntityTypes.BOSSES)) {
+            if (!BOSS_OUTLINE_RENDERABLE.get()) return null;
             return new OutlineColor(BOSS_OUTLINE_RED.get(), BOSS_OUTLINE_GREEN.get(), BOSS_OUTLINE_BLUE.get(), BOSS_OUTLINE_ALPHA.get());
         } else if (ENTITY_COLOR_MAP.containsKey(RegistryEntry.get(entity))) {
+            if (!ENTITY_OUTLINE_RENDERABLE.get()) return null;
             return ENTITY_COLOR_MAP.get(RegistryEntry.get(entity));
         } else if (entity instanceof LivingEntity) {
+            if (!ENTITY_OUTLINE_RENDERABLE.get()) return null;
             return new OutlineColor(ENTITY_OUTLINE_RED.get(), ENTITY_OUTLINE_GREEN.get(), ENTITY_OUTLINE_BLUE.get(), ENTITY_OUTLINE_ALPHA.get());
         } else {
             return null;
@@ -208,12 +212,16 @@ public class ItIsMeConfig {
 
     public static @Nullable OutlineColor getEntityShadowOutlineColor(Entity entity) {
         if (entity instanceof Player) {
+            if (!PLAYER_SHADOW_OUTLINE_RENDERABLE.get()) return null;
             return new OutlineColor(PLAYER_SHADOW_OUTLINE_RED.get(), PLAYER_SHADOW_OUTLINE_GREEN.get(), PLAYER_SHADOW_OUTLINE_BLUE.get(), PLAYER_SHADOW_OUTLINE_ALPHA.get());
         } else if (entity.getType().is(Tags.EntityTypes.BOSSES)) {
+            if (!BOSS_SHADOW_OUTLINE_RENDERABLE.get()) return null;
             return new OutlineColor(BOSS_SHADOW_OUTLINE_RED.get(), BOSS_SHADOW_OUTLINE_GREEN.get(), BOSS_SHADOW_OUTLINE_BLUE.get(), BOSS_SHADOW_OUTLINE_ALPHA.get());
         } else if (ENTITY_SHADOW_COLOR_MAP.containsKey(RegistryEntry.get(entity))) {
+            if (!ENTITY_SHADOW_OUTLINE_RENDERABLE.get()) return null;
             return ENTITY_SHADOW_COLOR_MAP.get(RegistryEntry.get(entity));
         } else if (entity instanceof LivingEntity) {
+            if (!ENTITY_SHADOW_OUTLINE_RENDERABLE.get()) return null;
             return new OutlineColor(ENTITY_SHADOW_OUTLINE_RED.get(), ENTITY_SHADOW_OUTLINE_GREEN.get(), ENTITY_SHADOW_OUTLINE_BLUE.get(), ENTITY_SHADOW_OUTLINE_ALPHA.get());
         } else {
             return null;
