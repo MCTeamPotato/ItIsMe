@@ -1,0 +1,41 @@
+{
+  "config.itisme.player_outline_renderable.name": "启用玩家描边",
+  "config.itisme.player_outline_red.name": "玩家描边红色",
+  "config.itisme.player_outline_green.name": "玩家描边绿色",
+  "config.itisme.player_outline_blue.name": "玩家描边蓝色",
+  "config.itisme.player_outline_alpha.name": "玩家描边透明度",
+
+  "config.itisme.boss_outline_renderable.name": "启用Boss描边",
+  "config.itisme.boss_outline_red.name": "Boss描边红色",
+  "config.itisme.boss_outline_green.name": "Boss描边绿色",
+  "config.itisme.boss_outline_blue.name": "Boss描边蓝色",
+  "config.itisme.boss_outline_alpha.name": "Boss描边透明度",
+
+  "config.itisme.entity_outline_renderable.name": "启用生物描边",
+  "config.itisme.entity_outline_red.name": "生物描边红色",
+  "config.itisme.entity_outline_green.name": "生物描边绿色",
+  "config.itisme.entity_outline_blue.name": "生物描边蓝色",
+  "config.itisme.entity_outline_alpha.name": "生物描边透明度",
+
+  "config.itisme.entity_outline_page": "生物描边",
+
+  "config.itisme.player_shadow_outline_renderable.name": "启用玩家阴影描边",
+  "config.itisme.player_shadow_outline_red.name": "玩家阴影描边红色",
+  "config.itisme.player_shadow_outline_green.name": "玩家阴影描边绿色",
+  "config.itisme.player_shadow_outline_blue.name": "玩家阴影描边蓝色",
+  "config.itisme.player_shadow_outline_alpha.name": "玩家阴影描边透明度",
+
+  "config.itisme.boss_shadow_outline_renderable.name": "启用Boss阴影描边",
+  "config.itisme.boss_shadow_outline_red.name": "Boss阴影描边红色",
+  "config.itisme.boss_shadow_outline_green.name": "Boss阴影描边绿色",
+  "config.itisme.boss_shadow_outline_blue.name": "Boss阴影描边蓝色",
+  "config.itisme.boss_shadow_outline_alpha.name": "Boss阴影描边透明度",
+
+  "config.itisme.entity_shadow_outline_renderable.name": "启用生物阴影描边",
+  "config.itisme.entity_shadow_outline_red.name": "生物阴影描边红色",
+  "config.itisme.entity_shadow_outline_green.name": "生物阴影描边绿色",
+  "config.itisme.entity_shadow_outline_blue.name": "生物阴影描边蓝色",
+  "config.itisme.entity_shadow_outline_alpha.name": "生物阴影描边透明度",
+
+  "config.itisme.entity_shadow_outline_page": "生物阴影描边"
+}

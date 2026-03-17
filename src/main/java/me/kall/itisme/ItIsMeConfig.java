@@ -43,28 +43,34 @@ public class ItIsMeConfig {
 
     public static final ForgeConfigSpec.DoubleValue PLAYER_SHADOW_RADIUS_EXT, BOSS_SHADOW_RADIUS_EXT, ENTITY_SHADOW_RADIUS_EXT;
 
+    public static final ForgeConfigSpec.BooleanValue PLAYER_OUTLINE_RENDERABLE, BOSS_OUTLINE_RENDERABLE, ENTITY_OUTLINE_RENDERABLE;
+    public static final ForgeConfigSpec.BooleanValue PLAYER_SHADOW_OUTLINE_RENDERABLE, BOSS_SHADOW_OUTLINE_RENDERABLE, ENTITY_SHADOW_OUTLINE_RENDERABLE;
+
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         builder.push("ItIsMeConfig");
         builder.push("EntityOutline");
         OUTLINE_RENDERABLE_DIST = builder.comment("In blocks.").defineInRange("OutlineRenderableDistance", 24, 0, Integer.MAX_VALUE);
         builder.push("PlayerOutline");
+        PLAYER_OUTLINE_RENDERABLE = builder.define("PlayerOutlineRenderable", true);
         PLAYER_OUTLINE_RED = builder.defineInRange("PlayerOutlineRed", 0, 0, 255);
         PLAYER_OUTLINE_GREEN = builder.defineInRange("PlayerOutlineGreen", 255, 0, 255);
         PLAYER_OUTLINE_BLUE = builder.defineInRange("PlayerOutlineBlue", 0, 0, 255);
         PLAYER_OUTLINE_ALPHA = builder.defineInRange("PlayerOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("BossEntityOutline");
+        BOSS_OUTLINE_RENDERABLE = builder.define("BossOutlineRenderable", true);
         BOSS_OUTLINE_RED = builder.defineInRange("BossOutlineRed", 255, 0, 255);
         BOSS_OUTLINE_GREEN = builder.defineInRange("BossOutlineGreen", 0, 0, 255);
         BOSS_OUTLINE_BLUE = builder.defineInRange("BossOutlineBlue", 0, 0, 255);
         BOSS_OUTLINE_ALPHA = builder.defineInRange("BossOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("OtherLivingEntityOutline");
-        ENTITY_OUTLINE_RED = builder.defineInRange("EntityOutlineRed", 255, 0, 255);
-        ENTITY_OUTLINE_GREEN = builder.defineInRange("EntityOutlineGreen", 255, 0, 255);
-        ENTITY_OUTLINE_BLUE = builder.defineInRange("EntityOutlineBlue", 255, 0, 255);
-        ENTITY_OUTLINE_ALPHA = builder.defineInRange("EntityOutlineAlpha", 255, 0, 255);
+        ENTITY_OUTLINE_RENDERABLE = builder.define("LivingEntityOutlineRenderable", true);
+        ENTITY_OUTLINE_RED = builder.defineInRange("LivingEntityOutlineRed", 255, 0, 255);
+        ENTITY_OUTLINE_GREEN = builder.defineInRange("LivingEntityOutlineGreen", 255, 0, 255);
+        ENTITY_OUTLINE_BLUE = builder.defineInRange("LivingEntityOutlineBlue", 255, 0, 255);
+        ENTITY_OUTLINE_ALPHA = builder.defineInRange("LivingEntityOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("EntityOutlineOverride");
         builder.comment("Format: entityResourceLocation;red;green;blue;alpha. For example: [\"minecraft:skeleton;128;255;70;255\", \"minecraft:zombie;60;90;45;255\"]");
@@ -73,6 +79,7 @@ public class ItIsMeConfig {
         builder.pop();
         builder.push("EntityShadowOutline");
         builder.push("PlayerShadowOutline");
+        PLAYER_SHADOW_OUTLINE_RENDERABLE = builder.define("PlayerShadowOutlineRenderable", true);
         PLAYER_SHADOW_RADIUS_EXT = builder.defineInRange("PlayerShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
         PLAYER_SHADOW_OUTLINE_RED = builder.defineInRange("PlayerShadowOutlineRed", 0, 0, 255);
         PLAYER_SHADOW_OUTLINE_GREEN = builder.defineInRange("PlayerShadowOutlineGreen", 255, 0, 255);
@@ -80,6 +87,7 @@ public class ItIsMeConfig {
         PLAYER_SHADOW_OUTLINE_ALPHA = builder.defineInRange("PlayerShadowOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("BossEntityShadowOutline");
+        BOSS_SHADOW_OUTLINE_RENDERABLE = builder.define("BossShadowOutlineRenderable", true);
         BOSS_SHADOW_RADIUS_EXT = builder.defineInRange("BossShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
         BOSS_SHADOW_OUTLINE_RED = builder.defineInRange("BossShadowOutlineRed", 255, 0, 255);
         BOSS_SHADOW_OUTLINE_GREEN = builder.defineInRange("BossShadowOutlineGreen", 0, 0, 255);
@@ -87,11 +95,12 @@ public class ItIsMeConfig {
         BOSS_SHADOW_OUTLINE_ALPHA = builder.defineInRange("BossShadowOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("OtherLivingEntityShadowOutline");
-        ENTITY_SHADOW_RADIUS_EXT = builder.defineInRange("EntityShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
-        ENTITY_SHADOW_OUTLINE_RED = builder.defineInRange("EntityShadowOutlineRed", 255, 0, 255);
-        ENTITY_SHADOW_OUTLINE_GREEN = builder.defineInRange("EntityShadowOutlineGreen", 255, 0, 255);
-        ENTITY_SHADOW_OUTLINE_BLUE = builder.defineInRange("EntityShadowOutlineBlue", 255, 0, 255);
-        ENTITY_SHADOW_OUTLINE_ALPHA = builder.defineInRange("EntityShadowOutlineAlpha", 255, 0, 255);
+        ENTITY_SHADOW_OUTLINE_RENDERABLE = builder.define("LivingEntityShadowOutlineRenderable", true);
+        ENTITY_SHADOW_RADIUS_EXT = builder.defineInRange("LivingEntityShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
+        ENTITY_SHADOW_OUTLINE_RED = builder.defineInRange("LivingEntityShadowOutlineRed", 255, 0, 255);
+        ENTITY_SHADOW_OUTLINE_GREEN = builder.defineInRange("LivingEntityShadowOutlineGreen", 255, 0, 255);
+        ENTITY_SHADOW_OUTLINE_BLUE = builder.defineInRange("LivingEntityShadowOutlineBlue", 255, 0, 255);
+        ENTITY_SHADOW_OUTLINE_ALPHA = builder.defineInRange("LivingEntityShadowOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("EntityShadowOutlineOverride");
         CUSTOM_SHADOW_RADIUS_EXT = builder.comment("Format: entityResourceLocation;multiplier. For example: [\"minecraft:skeleton;5.0\", \"minecraft:zombie;2.45\"]").defineList("CustomEntityShadowRadiusMultiplier", Lists.newArrayList(), obj -> obj instanceof String);
