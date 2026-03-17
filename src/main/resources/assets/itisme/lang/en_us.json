@@ -1,0 +1,41 @@
+{
+  "config.itisme.player_outline_renderable.name": "Player Outline Renderable",
+  "config.itisme.player_outline_red.name": "Player Outline Red",
+  "config.itisme.player_outline_green.name": "Player Outline Green",
+  "config.itisme.player_outline_blue.name": "Player Outline Blue",
+  "config.itisme.player_outline_alpha.name": "Player Outline Alpha",
+
+  "config.itisme.boss_outline_renderable.name": "Boss Outline Renderable",
+  "config.itisme.boss_outline_red.name": "Boss Outline Red",
+  "config.itisme.boss_outline_green.name": "Boss Outline Green",
+  "config.itisme.boss_outline_blue.name": "Boss Outline Blue",
+  "config.itisme.boss_outline_alpha.name": "Boss Outline Alpha",
+
+  "config.itisme.entity_outline_renderable.name": "Living Entity Outline Renderable",
+  "config.itisme.entity_outline_red.name": "Living Entity Outline Red",
+  "config.itisme.entity_outline_green.name": "Living Entity Outline Green",
+  "config.itisme.entity_outline_blue.name": "Living Entity Outline Blue",
+  "config.itisme.entity_outline_alpha.name": "Living Entity Outline Alpha",
+
+  "config.itisme.entity_outline_page": "Entity Outline",
+
+  "config.itisme.player_shadow_outline_renderable.name": "Player Shadow Outline Renderable",
+  "config.itisme.player_shadow_outline_red.name": "Player Shadow Outline Red",
+  "config.itisme.player_shadow_outline_green.name": "Player Shadow Outline Green",
+  "config.itisme.player_shadow_outline_blue.name": "Player Shadow Outline Blue",
+  "config.itisme.player_shadow_outline_alpha.name": "Player Shadow Outline Alpha",
+
+  "config.itisme.boss_shadow_outline_renderable.name": "Boss Shadow Outline Renderable",
+  "config.itisme.boss_shadow_outline_red.name": "Boss Shadow Outline Red",
+  "config.itisme.boss_shadow_outline_green.name": "Boss Shadow Outline Green",
+  "config.itisme.boss_shadow_outline_blue.name": "Boss Shadow Outline Blue",
+  "config.itisme.boss_shadow_outline_alpha.name": "Boss Shadow Outline Alpha",
+
+  "config.itisme.entity_shadow_outline_renderable.name": "Living Entity Shadow Outline Renderable",
+  "config.itisme.entity_shadow_outline_red.name": "Living Entity Shadow Outline Red",
+  "config.itisme.entity_shadow_outline_green.name": "Living Entity Shadow Outline Green",
+  "config.itisme.entity_shadow_outline_blue.name": "Living Entity Shadow Outline Blue",
+  "config.itisme.entity_shadow_outline_alpha.name": "Living Entity Shadow Outline Alpha",
+
+  "config.itisme.entity_shadow_outline_page": "Entity Shadow Outline"
+}

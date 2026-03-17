@@ -5,6 +5,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import me.kall.itisme.integration.SodiumIntegration;
+import me.kall.duplicationless.util.Mods;
 
 @Mod(ItIsMe.MOD_ID)
 public final class ItIsMe {
@@ -13,5 +15,6 @@ public final class ItIsMe {
     public ItIsMe(IEventBus modBus, Dist dist, ModContainer container) {
         if (!dist.isClient()) return;
         container.registerConfig(ModConfig.Type.CLIENT, ItIsMeConfig.LIGHT_TWEAK_CONFIG);
+        if (Mods.isLoaded("embeddium")) SodiumIntegration.register();
     }
 }
