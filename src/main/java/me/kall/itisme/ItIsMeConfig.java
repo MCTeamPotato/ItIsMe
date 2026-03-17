@@ -43,8 +43,8 @@ public class ItIsMeConfig {
 
     public static final ModConfigSpec.DoubleValue PLAYER_SHADOW_RADIUS_EXT, BOSS_SHADOW_RADIUS_EXT, ENTITY_SHADOW_RADIUS_EXT;
 
-    public static final ForgeConfigSpec.BooleanValue PLAYER_OUTLINE_RENDERABLE, BOSS_OUTLINE_RENDERABLE, ENTITY_OUTLINE_RENDERABLE;
-    public static final ForgeConfigSpec.BooleanValue PLAYER_SHADOW_OUTLINE_RENDERABLE, BOSS_SHADOW_OUTLINE_RENDERABLE, ENTITY_SHADOW_OUTLINE_RENDERABLE;
+    public static final ModConfigSpec.BooleanValue PLAYER_OUTLINE_RENDERABLE, BOSS_OUTLINE_RENDERABLE, ENTITY_OUTLINE_RENDERABLE;
+    public static final ModConfigSpec.BooleanValue PLAYER_SHADOW_OUTLINE_RENDERABLE, BOSS_SHADOW_OUTLINE_RENDERABLE, ENTITY_SHADOW_OUTLINE_RENDERABLE;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();

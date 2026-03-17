@@ -1,34 +1,34 @@
 package me.kall.itisme.integration;
 
 import com.google.common.collect.ImmutableList;
-import me.jellysquid.mods.sodium.client.gui.SodiumGameOptions;
-import me.jellysquid.mods.sodium.client.gui.options.OptionGroup;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpact;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
-import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
-import me.jellysquid.mods.sodium.client.gui.options.control.ControlValueFormatter;
-import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
-import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
-import me.jellysquid.mods.sodium.client.gui.options.storage.SodiumOptionsStorage;
 import me.kall.itisme.ItIsMe;
 import me.kall.itisme.ItIsMeConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.MinecraftForge;
+import net.neoforged.neoforge.common.NeoForge;
 import org.embeddedt.embeddium.api.OptionGUIConstructionEvent;
-import org.embeddedt.embeddium.client.gui.options.OptionIdentifier;
+import org.embeddedt.embeddium.api.options.OptionIdentifier;
+import org.embeddedt.embeddium.api.options.control.ControlValueFormatter;
+import org.embeddedt.embeddium.api.options.control.SliderControl;
+import org.embeddedt.embeddium.api.options.control.TickBoxControl;
+import org.embeddedt.embeddium.api.options.structure.OptionGroup;
+import org.embeddedt.embeddium.api.options.structure.OptionImpact;
+import org.embeddedt.embeddium.api.options.structure.OptionImpl;
+import org.embeddedt.embeddium.api.options.structure.OptionPage;
+import org.embeddedt.embeddium.impl.gui.EmbeddiumOptions;
+import org.embeddedt.embeddium.impl.gui.options.storage.EmbeddiumOptionsStorage;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class SodiumIntegration {
-    private static final SodiumOptionsStorage sodiumOpts = new SodiumOptionsStorage();
+    private static final EmbeddiumOptionsStorage sodiumOpts = new EmbeddiumOptionsStorage();
 
     private static final Component EMPTY = Component.empty();
 
     public static void register() {
-        MinecraftForge.EVENT_BUS.addListener(SodiumIntegration::registerConfig);
+        NeoForge.EVENT_BUS.addListener(SodiumIntegration::registerConfig);
     }
 
     private static void registerConfig(@NotNull OptionGUIConstructionEvent event) {
@@ -103,7 +103,7 @@ public class SodiumIntegration {
         event.addPage(entityShadowOutlinePage);
     }
 
-    private static OptionImpl<SodiumGameOptions, Boolean> createBooleanOption(String key, Supplier<Boolean> getter, Consumer<Boolean> setter) {
+    private static OptionImpl<EmbeddiumOptions, Boolean> createBooleanOption(String key, Supplier<Boolean> getter, Consumer<Boolean> setter) {
         return OptionImpl.createBuilder(Boolean.TYPE, sodiumOpts)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, key))
                 .setName(Component.translatable("config.itisme." + key + ".name"))
@@ -114,7 +114,7 @@ public class SodiumIntegration {
                 .build();
     }
 
-    private static OptionImpl<SodiumGameOptions, Integer> createColorOption(String key, Supplier<Integer> getter, Consumer<Integer> setter) {
+    private static OptionImpl<EmbeddiumOptions, Integer> createColorOption(String key, Supplier<Integer> getter, Consumer<Integer> setter) {
         return OptionImpl.createBuilder(Integer.TYPE, sodiumOpts)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, key))
                 .setName(Component.translatable("config.itisme." + key + ".name"))
