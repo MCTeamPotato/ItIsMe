@@ -47,7 +47,7 @@ public class ShadowOutlineRenderer {
         for (int y = maxY; y >= minY; y--) {
             mPos.setY(y);
             BlockState state = level.getBlockState(mPos);
-            if (state.getRenderShape() != RenderShape.INVISIBLE) {
+            if (state.getRenderShape() != RenderShape.INVISIBLE && state.isCollisionShapeFullBlock(level, mPos) && !state.getShape(level, mPos).isEmpty()) {
                 groundY = y + state.getShape(level, mPos).max(Direction.Axis.Y);
                 foundGround = true;
                 break;
