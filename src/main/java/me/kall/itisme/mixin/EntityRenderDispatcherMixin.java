@@ -1,12 +1,12 @@
-package me.kall.lighttweak.mixin;
+package me.kall.itisme.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import me.kall.lighttweak.LightTweakConfig;
-import me.kall.lighttweak.ShadowOutlineRenderer;
+import me.kall.itisme.ItIsMeConfig;
+import me.kall.itisme.ShadowOutlineRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.BlockPos;
@@ -55,7 +55,7 @@ public abstract class EntityRenderDispatcherMixin {
             )
     )
     private static void increaseShadowRadius(PoseStack poseStack, MultiBufferSource buffer, Entity entity, float weight, float partialTicks, LevelReader level, float size, @NotNull Operation<Void> original) {
-        original.call(poseStack, buffer, entity, weight, partialTicks, level, size * (float) LightTweakConfig.getEntityShadowRadiusExt(entity));
+        original.call(poseStack, buffer, entity, weight, partialTicks, level, size * (float) ItIsMeConfig.getEntityShadowRadiusExt(entity));
     }
 
     @Inject(

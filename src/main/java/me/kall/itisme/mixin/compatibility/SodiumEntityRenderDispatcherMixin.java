@@ -1,10 +1,10 @@
-package me.kall.lighttweak.mixin.compatibility;
+package me.kall.itisme.mixin.compatibility;
 
 import com.bawnorton.mixinsquared.TargetHandler;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import me.kall.lighttweak.ShadowOutlineRenderer;
+import me.kall.itisme.ShadowOutlineRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelReader;

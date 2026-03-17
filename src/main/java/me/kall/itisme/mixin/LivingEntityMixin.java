@@ -1,6 +1,6 @@
-package me.kall.lighttweak.mixin;
+package me.kall.itisme.mixin;
 
-import me.kall.lighttweak.LightTweakConfig;
+import me.kall.itisme.ItIsMeConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,6 +22,6 @@ public abstract class LivingEntityMixin {
         LivingEntity entity = (LivingEntity) (Object) this;
         LocalPlayer player = Minecraft.getInstance().player;
         if (player == null) return;
-        cir.setReturnValue(player.distanceTo(entity) <= LightTweakConfig.OUTLINE_RENDERABLE_DIST.get());
+        cir.setReturnValue(player.distanceTo(entity) <= ItIsMeConfig.OUTLINE_RENDERABLE_DIST.get());
     }
 }

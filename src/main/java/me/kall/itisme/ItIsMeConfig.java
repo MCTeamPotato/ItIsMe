@@ -1,4 +1,4 @@
-package me.kall.lighttweak;
+package me.kall.itisme;
 
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
@@ -25,8 +25,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = LightTweak.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class LightTweakConfig {
+@Mod.EventBusSubscriber(modid = ItIsMe.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class ItIsMeConfig {
     public static final ForgeConfigSpec LIGHT_TWEAK_CONFIG;
 
     public static final ForgeConfigSpec.IntValue PLAYER_OUTLINE_RED, PLAYER_OUTLINE_GREEN, PLAYER_OUTLINE_BLUE, PLAYER_OUTLINE_ALPHA;
@@ -45,7 +45,7 @@ public class LightTweakConfig {
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
-        builder.push("LightTweakConfig");
+        builder.push("ItIsMeConfig");
         builder.push("EntityOutline");
         OUTLINE_RENDERABLE_DIST = builder.comment("In blocks.").defineInRange("OutlineRenderableDistance", 24, 0, Integer.MAX_VALUE);
         builder.push("PlayerOutline");
@@ -105,7 +105,7 @@ public class LightTweakConfig {
     private static final Object2ObjectMap<ResourceLocation, OutlineColor> ENTITY_COLOR_MAP = new Object2ObjectOpenHashMap<>();
     private static final Object2ObjectMap<ResourceLocation, OutlineColor> ENTITY_SHADOW_COLOR_MAP = new Object2ObjectOpenHashMap<>();
     private static final Object2DoubleMap<ResourceLocation> ENTITY_SHADOW_RADIUS_MAP = new Object2DoubleOpenHashMap<>();
-    private static final Logger LOGGER = LogManager.getLogger(LightTweakConfig.class);
+    private static final Logger LOGGER = LogManager.getLogger(ItIsMeConfig.class);
 
     private static void parseCustomShadowRadius() {
         for (String entry : CUSTOM_SHADOW_RADIUS_EXT.get()) {
@@ -165,7 +165,7 @@ public class LightTweakConfig {
 
     @SubscribeEvent
     public static void reloadConfig(ModConfigEvent.@NotNull Reloading event) {
-        if (event.getConfig().getModId().equals(LightTweak.MOD_ID)) {
+        if (event.getConfig().getModId().equals(ItIsMe.MOD_ID)) {
             synchronized (ENTITY_COLOR_MAP) {
                 ENTITY_COLOR_MAP.clear();
                 parseCustomEntityOutline();
