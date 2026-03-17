@@ -4,15 +4,15 @@ loaderVersion = "[36,)"
 license = "MIT"
 
 [[mods]]
-modId = "lighttweak"
+modId = "itisme"
 version = "${version}"
-displayName = "LightTweak"
+displayName = "ItIsMe"
 authors = "Kall"
 description = '''
 '''
 #logoFile = ""
 
-[[dependencies.lighttweak]]
+[[dependencies.itisme]]
 modId="duplicationless"
 mandatory=true
 versionRange="[1.1.5,)"

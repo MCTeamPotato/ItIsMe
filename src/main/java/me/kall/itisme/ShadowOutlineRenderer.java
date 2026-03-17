@@ -1,4 +1,4 @@
-package me.kall.lighttweak;
+package me.kall.itisme;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -30,7 +30,7 @@ public class ShadowOutlineRenderer {
 
     public static void renderShadowOutline(PoseStack poseStack, MultiBufferSource buffer, @NotNull Entity entity, float weight, float partialTicks, LevelReader level, float size) {
         if (!isShadowRendered()) return;
-        OutlineColor shadowColor = LightTweakConfig.getEntityShadowOutlineColor(entity);
+        OutlineColor shadowColor = ItIsMeConfig.getEntityShadowOutlineColor(entity);
         if (shadowColor == null) return;
         double entityX = Mth.lerp(partialTicks, entity.xOld, entity.getX());
         double entityY = Mth.lerp(partialTicks, entity.yOld, entity.getY());

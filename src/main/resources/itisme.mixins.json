@@ -1,7 +1,7 @@
 {
   "required": true,
-  "package": "me.kall.lighttweak.mixin",
-  "plugin": "me.kall.lighttweak.mixin.MixinDepInitializer",
+  "package": "me.kall.itisme.mixin",
+  "plugin": "me.kall.itisme.mixin.MixinDepInitializer",
   "compatibilityLevel": "JAVA_8",
   "overwrites": {
     "conformVisibility": false

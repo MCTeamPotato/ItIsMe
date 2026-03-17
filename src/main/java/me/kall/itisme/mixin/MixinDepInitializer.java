@@ -1,4 +1,4 @@
-package me.kall.lighttweak.mixin;
+package me.kall.itisme.mixin;
 
 import com.bawnorton.mixinsquared.MixinSquaredBootstrap;
 import me.kall.duplicationless.util.Mods;

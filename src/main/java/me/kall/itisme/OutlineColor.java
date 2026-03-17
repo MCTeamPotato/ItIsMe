@@ -1,4 +1,4 @@
-package me.kall.lighttweak;
+package me.kall.itisme;
 
 public class OutlineColor {
     public int red;

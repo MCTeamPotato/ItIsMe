@@ -1,10 +1,10 @@
-package me.kall.lighttweak.mixin;
+package me.kall.itisme.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import me.kall.lighttweak.LightTweakConfig;
-import me.kall.lighttweak.OutlineColor;
+import me.kall.itisme.ItIsMeConfig;
+import me.kall.itisme.OutlineColor;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.OutlineBufferSource;
 import net.minecraft.world.entity.Entity;
@@ -22,7 +22,7 @@ public abstract class LevelRendererMixin {
             )
     )
     private void resetColor(OutlineBufferSource bufferSource, int red, int green, int blue, int alpha, @NotNull Operation<Void> original, @Local Entity entity) {
-        OutlineColor color = LightTweakConfig.getEntityOutlineColor(entity);
+        OutlineColor color = ItIsMeConfig.getEntityOutlineColor(entity);
         if (color == null) {
             original.call(bufferSource, red, green, blue, alpha);
         } else {

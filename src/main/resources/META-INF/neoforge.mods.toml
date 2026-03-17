@@ -4,16 +4,16 @@ loaderVersion = "[4,)"
 license = "MIT"
 
 [[mods]]
-modId = "lighttweak"
+modId = "itisme"
 version = "${version}"
-displayName = "LightTweak"
+displayName = "ItIsMe"
 authors = "Kall"
 description = '''
 A Minecraft mod
 '''
 #logoFile = ""
 
-[[dependencies.lighttweak]]
+[[dependencies.itisme]]
 modId="duplicationless"
 mandatory=true
 versionRange="[1.1.5,)"
@@ -21,4 +21,4 @@ ordering="NONE"
 side="BOTH"
 
 [[mixins]]
-config = "lighttweak.mixins.json"
+config = "itisme.mixins.json"
