@@ -85,8 +85,8 @@ public class ShadowOutlineRenderer {
             float x2 = Mth.cos(angle2) * radius;
             float z2 = Mth.sin(angle2) * radius;
 
-            lineBuffer.vertex(pose, x1, 0, z1).color(r, g, b, a).normal(0, 1, 0).endVertex();
-            lineBuffer.vertex(pose, x2, 0, z2).color(r, g, b, a).normal(0, 1, 0).endVertex();
+            lineBuffer.addVertex(pose, x1, 0, z1).setColor(r, g, b, a).setNormal(0, 1, 0);
+            lineBuffer.addVertex(pose, x2, 0, z2).setColor(r, g, b, a).setNormal(0, 1, 0);
         }
 
         poseStack.popPose();

@@ -6,18 +6,18 @@ import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import me.kall.duplicationless.ext.RegistryEntry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.Tags;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -25,26 +25,26 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = LightTweak.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = LightTweak.MOD_ID, value = Dist.CLIENT)
 public class LightTweakConfig {
-    public static final ForgeConfigSpec LIGHT_TWEAK_CONFIG;
+    public static final ModConfigSpec LIGHT_TWEAK_CONFIG;
 
-    public static final ForgeConfigSpec.IntValue PLAYER_OUTLINE_RED, PLAYER_OUTLINE_GREEN, PLAYER_OUTLINE_BLUE, PLAYER_OUTLINE_ALPHA;
-    public static final ForgeConfigSpec.IntValue BOSS_OUTLINE_RED, BOSS_OUTLINE_GREEN, BOSS_OUTLINE_BLUE, BOSS_OUTLINE_ALPHA;
-    public static final ForgeConfigSpec.IntValue ENTITY_OUTLINE_RED, ENTITY_OUTLINE_GREEN, ENTITY_OUTLINE_BLUE, ENTITY_OUTLINE_ALPHA;
-    public static final ForgeConfigSpec.ConfigValue<List<? extends String>> CUSTOM_ENTITY_OUTLINE_COLOR, CUSTOM_SHADOW_RADIUS_EXT;
+    public static final ModConfigSpec.IntValue PLAYER_OUTLINE_RED, PLAYER_OUTLINE_GREEN, PLAYER_OUTLINE_BLUE, PLAYER_OUTLINE_ALPHA;
+    public static final ModConfigSpec.IntValue BOSS_OUTLINE_RED, BOSS_OUTLINE_GREEN, BOSS_OUTLINE_BLUE, BOSS_OUTLINE_ALPHA;
+    public static final ModConfigSpec.IntValue ENTITY_OUTLINE_RED, ENTITY_OUTLINE_GREEN, ENTITY_OUTLINE_BLUE, ENTITY_OUTLINE_ALPHA;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> CUSTOM_ENTITY_OUTLINE_COLOR, CUSTOM_SHADOW_RADIUS_EXT;
 
-    public static final ForgeConfigSpec.IntValue PLAYER_SHADOW_OUTLINE_RED, PLAYER_SHADOW_OUTLINE_GREEN, PLAYER_SHADOW_OUTLINE_BLUE, PLAYER_SHADOW_OUTLINE_ALPHA;
-    public static final ForgeConfigSpec.IntValue BOSS_SHADOW_OUTLINE_RED, BOSS_SHADOW_OUTLINE_GREEN, BOSS_SHADOW_OUTLINE_BLUE, BOSS_SHADOW_OUTLINE_ALPHA;
-    public static final ForgeConfigSpec.IntValue ENTITY_SHADOW_OUTLINE_RED, ENTITY_SHADOW_OUTLINE_GREEN, ENTITY_SHADOW_OUTLINE_BLUE, ENTITY_SHADOW_OUTLINE_ALPHA;
-    public static final ForgeConfigSpec.ConfigValue<List<? extends String>> CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR;
+    public static final ModConfigSpec.IntValue PLAYER_SHADOW_OUTLINE_RED, PLAYER_SHADOW_OUTLINE_GREEN, PLAYER_SHADOW_OUTLINE_BLUE, PLAYER_SHADOW_OUTLINE_ALPHA;
+    public static final ModConfigSpec.IntValue BOSS_SHADOW_OUTLINE_RED, BOSS_SHADOW_OUTLINE_GREEN, BOSS_SHADOW_OUTLINE_BLUE, BOSS_SHADOW_OUTLINE_ALPHA;
+    public static final ModConfigSpec.IntValue ENTITY_SHADOW_OUTLINE_RED, ENTITY_SHADOW_OUTLINE_GREEN, ENTITY_SHADOW_OUTLINE_BLUE, ENTITY_SHADOW_OUTLINE_ALPHA;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR;
 
-    public static final ForgeConfigSpec.IntValue OUTLINE_RENDERABLE_DIST;
+    public static final ModConfigSpec.IntValue OUTLINE_RENDERABLE_DIST;
 
-    public static final ForgeConfigSpec.DoubleValue PLAYER_SHADOW_RADIUS_EXT, BOSS_SHADOW_RADIUS_EXT, ENTITY_SHADOW_RADIUS_EXT;
+    public static final ModConfigSpec.DoubleValue PLAYER_SHADOW_RADIUS_EXT, BOSS_SHADOW_RADIUS_EXT, ENTITY_SHADOW_RADIUS_EXT;
 
     static {
-        ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
         builder.push("LightTweakConfig");
         builder.push("EntityOutline");
         OUTLINE_RENDERABLE_DIST = builder.comment("In blocks.").defineInRange("OutlineRenderableDistance", 24, 0, Integer.MAX_VALUE);
@@ -68,7 +68,7 @@ public class LightTweakConfig {
         builder.pop();
         builder.push("EntityOutlineOverride");
         builder.comment("Format: entityResourceLocation;red;green;blue;alpha. For example: [\"minecraft:skeleton;128;255;70;255\", \"minecraft:zombie;60;90;45;255\"]");
-        CUSTOM_ENTITY_OUTLINE_COLOR = builder.defineList("CustomEntityOutline", Lists.newArrayList(), obj -> obj instanceof String);
+        CUSTOM_ENTITY_OUTLINE_COLOR = builder.defineList("CustomEntityOutline", Lists.newArrayList(), () -> "entityResourceLocation;red;green;blue;alpha", obj -> obj instanceof String);
         builder.pop();
         builder.pop();
         builder.push("EntityShadowOutline");
@@ -94,8 +94,8 @@ public class LightTweakConfig {
         ENTITY_SHADOW_OUTLINE_ALPHA = builder.defineInRange("EntityShadowOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("EntityShadowOutlineOverride");
-        CUSTOM_SHADOW_RADIUS_EXT = builder.comment("Format: entityResourceLocation;multiplier. For example: [\"minecraft:skeleton;5.0\", \"minecraft:zombie;2.45\"]").defineList("CustomEntityShadowRadiusMultiplier", Lists.newArrayList(), obj -> obj instanceof String);
-        CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR = builder.comment("Format: entityResourceLocation;red;green;blue;alpha. For example: [\"minecraft:skeleton;128;255;70;255\", \"minecraft:zombie;60;90;45;255\"]").defineList("CustomEntityShadowOutline", Lists.newArrayList(), obj -> obj instanceof String);
+        CUSTOM_SHADOW_RADIUS_EXT = builder.comment("Format: entityResourceLocation;multiplier. For example: [\"minecraft:skeleton;5.0\", \"minecraft:zombie;2.45\"]").defineList("CustomEntityShadowRadiusMultiplier", Lists.newArrayList(), () -> "entityResourceLocation;radiusMultiplier", obj -> obj instanceof String);
+        CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR = builder.comment("Format: entityResourceLocation;red;green;blue;alpha. For example: [\"minecraft:skeleton;128;255;70;255\", \"minecraft:zombie;60;90;45;255\"]").defineList("CustomEntityShadowOutline", Lists.newArrayList(), () -> "entityResourceLocation;red;green;blue;alpha", obj -> obj instanceof String);
         builder.pop();
         builder.pop();
         builder.pop();
@@ -111,7 +111,7 @@ public class LightTweakConfig {
         for (String entry : CUSTOM_SHADOW_RADIUS_EXT.get()) {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
-            if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
+            if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).isPresent()) {
                 LOGGER.warn("Invalid entry {} for custom entity shadow radius in Light Tweak config. Skipping.", entry);
                 continue;
             }
@@ -124,7 +124,7 @@ public class LightTweakConfig {
         for (String entry : CUSTOM_ENTITY_OUTLINE_COLOR.get()) {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
-            if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
+            if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).isPresent()) {
                 LOGGER.warn("Invalid entry {} for custom entity outline in Light Tweak config. Skipping.", entry);
                 continue;
             }
@@ -141,7 +141,7 @@ public class LightTweakConfig {
         for (String entry : CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR.get()) {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
-            if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
+            if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).isPresent()) {
                 LOGGER.warn("Invalid entry {} for custom entity shadow outline in Light Tweak config. Skipping.", entry);
                 continue;
             }

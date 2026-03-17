@@ -1,16 +1,17 @@
 package me.kall.lighttweak;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLLoader;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 
 @Mod(LightTweak.MOD_ID)
 public final class LightTweak {
     public static final String MOD_ID = "lighttweak";
 
-    public LightTweak(FMLJavaModLoadingContext context) {
-        if (!FMLLoader.getDist().isClient()) return;
-        context.registerConfig(ModConfig.Type.CLIENT, LightTweakConfig.LIGHT_TWEAK_CONFIG);
+    public LightTweak(IEventBus modBus, Dist dist, ModContainer container) {
+        if (!dist.isClient()) return;
+        container.registerConfig(ModConfig.Type.CLIENT, LightTweakConfig.LIGHT_TWEAK_CONFIG);
     }
 }

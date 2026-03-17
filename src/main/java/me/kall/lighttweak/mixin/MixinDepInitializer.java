@@ -1,7 +1,6 @@
 package me.kall.lighttweak.mixin;
 
 import com.bawnorton.mixinsquared.MixinSquaredBootstrap;
-import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import me.kall.duplicationless.util.Mods;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.tree.ClassNode;
@@ -15,7 +14,6 @@ import java.util.Set;
 public class MixinDepInitializer implements IMixinConfigPlugin {
     @Override
     public void onLoad(String mixinPackage) {
-        MixinExtrasBootstrap.init();
         MixinSquaredBootstrap.init();
     }
 

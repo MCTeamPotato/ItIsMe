@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = EntityRenderDispatcher.class, priority = 1500)
 public abstract class SodiumEntityRenderDispatcherMixin {
     @TargetHandler(
-            mixin = "me.jellysquid.mods.sodium.mixin.features.render.entity.shadows.EntityRenderDispatcherMixin",
+            mixin = "org.embeddedt.embeddium.impl.mixin.features.render.entity.shadows.EntityRenderDispatcherMixin",
             name = "renderShadowPartFast"
     )
     @ModifyExpressionValue(
@@ -32,7 +32,7 @@ public abstract class SodiumEntityRenderDispatcherMixin {
     }
 
     @TargetHandler(
-            mixin = "me.jellysquid.mods.sodium.mixin.features.render.entity.shadows.EntityRenderDispatcherMixin",
+            mixin = "org.embeddedt.embeddium.impl.mixin.features.render.entity.shadows.EntityRenderDispatcherMixin",
             name = "renderShadowPartFast"
     )
     @Inject(

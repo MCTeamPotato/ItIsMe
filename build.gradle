@@ -88,7 +88,7 @@ dependencies {
         forge "net.minecraftforge:forge:${project.minecraft_version}-${versionInfo.forge}"
     }
 
-    modImplementation("curse.maven:accelerated-rendering-1314021:7342975")
+    modImplementation("curse.maven:accelerated-rendering-1314021:7342942")
     if (!isNeo) shadow(annotationProcessor("io.github.llamalad7:mixinextras-common:${project.mixinextras_version}"))
     shadow(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.1"))
 

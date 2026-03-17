@@ -1,5 +1,8 @@
 {
-  "targets": [ "swap", "final" ],
+  "targets": [
+    "swap",
+    "final"
+  ],
   "passes": [
     {
       "name": "entity_outline",
@@ -7,21 +10,27 @@
       "outtarget": "swap"
     },
     {
-      "name": "blur",
+      "name": "entity_outline_box_blur",
       "intarget": "swap",
       "outtarget": "final",
+      "use_linear_filter": true,
       "uniforms": [
-        { "name": "BlurDir", "values": [ 1.0, 0.0 ] },
-        { "name": "Radius", "values": [ 0.5 ] }
+        {
+          "name": "BlurDir",
+          "values": [ 0.5, 0.0 ]
+        }
       ]
     },
     {
-      "name": "blur",
+      "name": "entity_outline_box_blur",
       "intarget": "final",
       "outtarget": "swap",
+      "use_linear_filter": true,
       "uniforms": [
-        { "name": "BlurDir", "values": [ 0.0, 1.0 ] },
-        { "name": "Radius", "values": [ 0.5 ] }
+        {
+          "name": "BlurDir",
+          "values": [ 0.0, 0.5 ]
+        }
       ]
     },
     {

@@ -62,7 +62,7 @@ public abstract class EntityRenderDispatcherMixin {
             method = "renderBlockShadow",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;shadowVertex(Lcom/mojang/blaze3d/vertex/PoseStack$Pose;Lcom/mojang/blaze3d/vertex/VertexConsumer;FFFFFF)V",
+                    target = "Lnet/minecraft/client/renderer/entity/EntityRenderDispatcher;shadowVertex(Lcom/mojang/blaze3d/vertex/PoseStack$Pose;Lcom/mojang/blaze3d/vertex/VertexConsumer;IFFFFF)V",
                     ordinal = 0
             )
     )
