@@ -1,4 +1,10 @@
 {
+  "config.itisme.attackable_outline_renderable.name": "Attackable Entity Outline Renderable",
+  "config.itisme.attackable_outline_red.name": "Attackable Entity Outline Red",
+  "config.itisme.attackable_outline_green.name": "Attackable Entity Outline Green",
+  "config.itisme.attackable_outline_blue.name": "Attackable Entity Outline Blue",
+  "config.itisme.attackable_outline_alpha.name": "Attackable Entity Outline Alpha",
+
   "config.itisme.player_outline_renderable.name": "Player Outline Renderable",
   "config.itisme.player_outline_red.name": "Player Outline Red",
   "config.itisme.player_outline_green.name": "Player Outline Green",
@@ -18,6 +24,12 @@
   "config.itisme.entity_outline_alpha.name": "Living Entity Outline Alpha",
 
   "config.itisme.entity_outline_page": "Entity Outline",
+
+  "config.itisme.attackable_shadow_outline_renderable.name": "Attackable Entity Shadow Outline Renderable",
+  "config.itisme.attackable_shadow_outline_red.name": "Attackable Entity Shadow Outline Red",
+  "config.itisme.attackable_shadow_outline_green.name": "Attackable Entity Shadow Outline Green",
+  "config.itisme.attackable_shadow_outline_blue.name": "Attackable Entity Shadow Outline Blue",
+  "config.itisme.attackable_shadow_outline_alpha.name": "Attackable Entity Shadow Outline Alpha",
 
   "config.itisme.player_shadow_outline_renderable.name": "Player Shadow Outline Renderable",
   "config.itisme.player_shadow_outline_red.name": "Player Shadow Outline Red",

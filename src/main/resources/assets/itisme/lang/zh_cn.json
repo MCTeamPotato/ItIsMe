@@ -1,4 +1,10 @@
 {
+  "config.itisme.attackable_outline_renderable.name": "启用可击中实体描边",
+  "config.itisme.attackable_outline_red.name": "可击中实体描边红色",
+  "config.itisme.attackable_outline_green.name": "可击中实体描边绿色",
+  "config.itisme.attackable_outline_blue.name": "可击中实体描边蓝色",
+  "config.itisme.attackable_outline_alpha.name": "可击中实体描边透明度",
+
   "config.itisme.player_outline_renderable.name": "启用玩家描边",
   "config.itisme.player_outline_red.name": "玩家描边红色",
   "config.itisme.player_outline_green.name": "玩家描边绿色",
@@ -18,6 +24,12 @@
   "config.itisme.entity_outline_alpha.name": "生物描边透明度",
 
   "config.itisme.entity_outline_page": "生物描边",
+
+  "config.itisme.attackable_shadow_outline_renderable.name": "启用可击中实体阴影描边",
+  "config.itisme.attackable_shadow_outline_red.name": "可击中实体阴影描边红色",
+  "config.itisme.attackable_shadow_outline_green.name": "可击中实体阴影描边绿色",
+  "config.itisme.attackable_shadow_outline_blue.name": "可击中实体阴影描边蓝色",
+  "config.itisme.attackable_shadow_outline_alpha.name": "可击中实体阴影描边透明度",
 
   "config.itisme.player_shadow_outline_renderable.name": "启用玩家阴影描边",
   "config.itisme.player_shadow_outline_red.name": "玩家阴影描边红色",

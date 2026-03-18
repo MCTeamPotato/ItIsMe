@@ -2,7 +2,10 @@ package me.kall.itisme.integration;
 
 import com.google.common.collect.ImmutableList;
 import me.jellysquid.mods.sodium.client.gui.SodiumGameOptions;
-import me.jellysquid.mods.sodium.client.gui.options.*;
+import me.jellysquid.mods.sodium.client.gui.options.OptionGroup;
+import me.jellysquid.mods.sodium.client.gui.options.OptionImpact;
+import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
+import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
 import me.jellysquid.mods.sodium.client.gui.options.control.ControlValueFormatter;
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
@@ -56,10 +59,18 @@ public class SodiumIntegration {
                 ItIsMeConfig.ENTITY_OUTLINE_ALPHA, ItIsMeConfig.ENTITY_OUTLINE_ALPHA::set
         );
 
+        OptionGroup attackableOutlineGroup = createOutlineGroup("attackable_outline",
+                ItIsMeConfig.CHANGE_ATTACKABLE_OUTLINE_COLOR, ItIsMeConfig.CHANGE_ATTACKABLE_OUTLINE_COLOR::set,
+                ItIsMeConfig.ATTACKABLE_OUTLINE_RED, ItIsMeConfig.ATTACKABLE_OUTLINE_RED::set,
+                ItIsMeConfig.ATTACKABLE_OUTLINE_GREEN, ItIsMeConfig.ATTACKABLE_OUTLINE_GREEN::set,
+                ItIsMeConfig.ATTACKABLE_OUTLINE_BLUE, ItIsMeConfig.ATTACKABLE_OUTLINE_BLUE::set,
+                ItIsMeConfig.ATTACKABLE_OUTLINE_ALPHA, ItIsMeConfig.ATTACKABLE_OUTLINE_ALPHA::set
+        );
+
         OptionPage entityOutlinePage = new OptionPage(
-                OptionIdentifier.create(ItIsMe.MOD_ID, "entiy_outline_page"),
+                OptionIdentifier.create(ItIsMe.MOD_ID, "entity_outline_page"),
                 Component.translatable("config.itisme.entity_outline_page"),
-                ImmutableList.of(playerOutlineGroup, bossOutlineGroup, entityOutlineGroup)
+                ImmutableList.of(playerOutlineGroup, bossOutlineGroup, attackableOutlineGroup, entityOutlineGroup)
         );
 
         event.addPage(entityOutlinePage);
@@ -82,6 +93,14 @@ public class SodiumIntegration {
                 ItIsMeConfig.BOSS_SHADOW_OUTLINE_ALPHA, ItIsMeConfig.BOSS_SHADOW_OUTLINE_ALPHA::set
         );
 
+        OptionGroup attackableShadowOutlineGroup = createOutlineGroup("attackable_shadow_outline",
+                ItIsMeConfig.CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR, ItIsMeConfig.CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR::set,
+                ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_RED, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_RED::set,
+                ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_GREEN, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_GREEN::set,
+                ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_BLUE, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_BLUE::set,
+                ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_ALPHA, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_ALPHA::set
+        );
+
         OptionGroup entityShadowOutlineGroup = createOutlineGroup(
                 "entity_shadow_outline",
                 ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RENDERABLE::set,
@@ -94,7 +113,7 @@ public class SodiumIntegration {
         OptionPage entityShadowOutlinePage = new OptionPage(
                 OptionIdentifier.create(ItIsMe.MOD_ID, "entity_shadow_outline_page"),
                 Component.translatable("config.itisme.entity_shadow_outline_page"),
-                ImmutableList.of(playerShadowOutlineGroup, bossShadowOutlineGroup, entityShadowOutlineGroup)
+                ImmutableList.of(playerShadowOutlineGroup, bossShadowOutlineGroup, attackableShadowOutlineGroup, entityShadowOutlineGroup)
         );
 
         event.addPage(entityShadowOutlinePage);
