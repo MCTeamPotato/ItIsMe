@@ -32,22 +32,44 @@
   "config.itisme.attackable_shadow_outline_alpha.name": "Attackable Entity Shadow Outline Alpha",
 
   "config.itisme.player_shadow_outline_renderable.name": "Player Shadow Outline Renderable",
+  "config.itisme.player_shadow_outline_radius_multiplier.name": "Player Shadow Radius Multiplier (×0.01)",
   "config.itisme.player_shadow_outline_red.name": "Player Shadow Outline Red",
   "config.itisme.player_shadow_outline_green.name": "Player Shadow Outline Green",
   "config.itisme.player_shadow_outline_blue.name": "Player Shadow Outline Blue",
   "config.itisme.player_shadow_outline_alpha.name": "Player Shadow Outline Alpha",
 
   "config.itisme.boss_shadow_outline_renderable.name": "Boss Shadow Outline Renderable",
+  "config.itisme.boss_shadow_outline_radius_multiplier.name": "Boss Shadow Radius Multiplier (×0.01)",
   "config.itisme.boss_shadow_outline_red.name": "Boss Shadow Outline Red",
   "config.itisme.boss_shadow_outline_green.name": "Boss Shadow Outline Green",
   "config.itisme.boss_shadow_outline_blue.name": "Boss Shadow Outline Blue",
   "config.itisme.boss_shadow_outline_alpha.name": "Boss Shadow Outline Alpha",
 
   "config.itisme.entity_shadow_outline_renderable.name": "Living Entity Shadow Outline Renderable",
+  "config.itisme.entity_shadow_outline_radius_multiplier.name": "Living Entity Shadow Radius Multiplier (×0.01)",
   "config.itisme.entity_shadow_outline_red.name": "Living Entity Shadow Outline Red",
   "config.itisme.entity_shadow_outline_green.name": "Living Entity Shadow Outline Green",
   "config.itisme.entity_shadow_outline_blue.name": "Living Entity Shadow Outline Blue",
   "config.itisme.entity_shadow_outline_alpha.name": "Living Entity Shadow Outline Alpha",
 
-  "config.itisme.entity_shadow_outline_page": "Entity Shadow Outline"
+  "config.itisme.entity_shadow_outline_page": "Entity Shadow Outline",
+
+  "config.itisme.custom_entity_outline.red": "%s Outline Red",
+  "config.itisme.custom_entity_outline.green": "%s Outline Green",
+  "config.itisme.custom_entity_outline.blue": "%s Outline Blue",
+  "config.itisme.custom_entity_outline.alpha": "%s Outline Alpha",
+
+  "config.itisme.custom_entity_shadow_outline.red": "%s Shadow Outline Red",
+  "config.itisme.custom_entity_shadow_outline.green": "%s Shadow Outline Green",
+  "config.itisme.custom_entity_shadow_outline.blue": "%s Shadow Outline Blue",
+  "config.itisme.custom_entity_shadow_outline.alpha": "%s Shadow Outline Alpha",
+  "config.itisme.custom_entity_shadow_outline.radius_enable": "%s Custom Shadow Radius",
+  "config.itisme.custom_entity_shadow_outline.radius": "%s Shadow Radius Multiplier (×0.01)",
+
+  "config.itisme.custom_entity_outline_page": "Custom Entity Outline",
+  "config.itisme.custom_entity_shadow_outline_page": "Custom Entity Shadow Outline",
+
+  "config.itisme.general_page": "General",
+
+  "config.itisme.outline_renderable_dist.name": "Outline Render Distance"
 }

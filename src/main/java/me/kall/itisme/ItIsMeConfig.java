@@ -56,30 +56,30 @@ public class ItIsMeConfig {
         OUTLINE_RENDERABLE_DIST = builder.comment("In blocks.").defineInRange("OutlineRenderableDistance", 24, 0, Integer.MAX_VALUE);
         builder.push("PlayerOutline");
         PLAYER_OUTLINE_RENDERABLE = builder.define("PlayerOutlineRenderable", true);
-        PLAYER_OUTLINE_RED = builder.defineInRange("PlayerOutlineRed", 0, 0, 255);
+        PLAYER_OUTLINE_RED   = builder.defineInRange("PlayerOutlineRed",   0,   0, 255);
         PLAYER_OUTLINE_GREEN = builder.defineInRange("PlayerOutlineGreen", 255, 0, 255);
-        PLAYER_OUTLINE_BLUE = builder.defineInRange("PlayerOutlineBlue", 0, 0, 255);
+        PLAYER_OUTLINE_BLUE  = builder.defineInRange("PlayerOutlineBlue",  0,   0, 255);
         PLAYER_OUTLINE_ALPHA = builder.defineInRange("PlayerOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("BossEntityOutline");
         BOSS_OUTLINE_RENDERABLE = builder.define("BossOutlineRenderable", true);
-        BOSS_OUTLINE_RED = builder.defineInRange("BossOutlineRed", 255, 0, 255);
-        BOSS_OUTLINE_GREEN = builder.defineInRange("BossOutlineGreen", 0, 0, 255);
-        BOSS_OUTLINE_BLUE = builder.defineInRange("BossOutlineBlue", 0, 0, 255);
+        BOSS_OUTLINE_RED   = builder.defineInRange("BossOutlineRed",   255, 0, 255);
+        BOSS_OUTLINE_GREEN = builder.defineInRange("BossOutlineGreen", 0,   0, 255);
+        BOSS_OUTLINE_BLUE  = builder.defineInRange("BossOutlineBlue",  0,   0, 255);
         BOSS_OUTLINE_ALPHA = builder.defineInRange("BossOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("AttackableEntityTargetOutline");
         CHANGE_ATTACKABLE_OUTLINE_COLOR = builder.define("ChangeAttackableEntityTargetOutlineColor", true);
-        ATTACKABLE_OUTLINE_RED = builder.defineInRange("AttackableOutlineRed", 255, 0, 255);
+        ATTACKABLE_OUTLINE_RED   = builder.defineInRange("AttackableOutlineRed",   255, 0, 255);
         ATTACKABLE_OUTLINE_GREEN = builder.defineInRange("AttackableOutlineGreen", 255, 0, 255);
-        ATTACKABLE_OUTLINE_BLUE = builder.defineInRange("AttackableOutlineBlue", 0, 0, 255);
+        ATTACKABLE_OUTLINE_BLUE  = builder.defineInRange("AttackableOutlineBlue",  0,   0, 255);
         ATTACKABLE_OUTLINE_ALPHA = builder.defineInRange("AttackableOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("OtherLivingEntityOutline");
         ENTITY_OUTLINE_RENDERABLE = builder.define("LivingEntityOutlineRenderable", true);
-        ENTITY_OUTLINE_RED = builder.defineInRange("LivingEntityOutlineRed", 255, 0, 255);
+        ENTITY_OUTLINE_RED   = builder.defineInRange("LivingEntityOutlineRed",   255, 0, 255);
         ENTITY_OUTLINE_GREEN = builder.defineInRange("LivingEntityOutlineGreen", 255, 0, 255);
-        ENTITY_OUTLINE_BLUE = builder.defineInRange("LivingEntityOutlineBlue", 255, 0, 255);
+        ENTITY_OUTLINE_BLUE  = builder.defineInRange("LivingEntityOutlineBlue",  255, 0, 255);
         ENTITY_OUTLINE_ALPHA = builder.defineInRange("LivingEntityOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("EntityOutlineOverride");
@@ -90,47 +90,49 @@ public class ItIsMeConfig {
         builder.push("EntityShadowOutline");
         builder.push("PlayerShadowOutline");
         PLAYER_SHADOW_OUTLINE_RENDERABLE = builder.define("PlayerShadowOutlineRenderable", true);
-        PLAYER_SHADOW_RADIUS_EXT = builder.defineInRange("PlayerShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
-        PLAYER_SHADOW_OUTLINE_RED = builder.defineInRange("PlayerShadowOutlineRed", 0, 0, 255);
+        PLAYER_SHADOW_RADIUS_EXT         = builder.defineInRange("PlayerShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
+        PLAYER_SHADOW_OUTLINE_RED   = builder.defineInRange("PlayerShadowOutlineRed",   0,   0, 255);
         PLAYER_SHADOW_OUTLINE_GREEN = builder.defineInRange("PlayerShadowOutlineGreen", 255, 0, 255);
-        PLAYER_SHADOW_OUTLINE_BLUE = builder.defineInRange("PlayerShadowOutlineBlue", 0, 0, 255);
+        PLAYER_SHADOW_OUTLINE_BLUE  = builder.defineInRange("PlayerShadowOutlineBlue",  0,   0, 255);
         PLAYER_SHADOW_OUTLINE_ALPHA = builder.defineInRange("PlayerShadowOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("BossEntityShadowOutline");
         BOSS_SHADOW_OUTLINE_RENDERABLE = builder.define("BossShadowOutlineRenderable", true);
-        BOSS_SHADOW_RADIUS_EXT = builder.defineInRange("BossShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
-        BOSS_SHADOW_OUTLINE_RED = builder.defineInRange("BossShadowOutlineRed", 255, 0, 255);
-        BOSS_SHADOW_OUTLINE_GREEN = builder.defineInRange("BossShadowOutlineGreen", 0, 0, 255);
-        BOSS_SHADOW_OUTLINE_BLUE = builder.defineInRange("BossShadowOutlineBlue", 0, 0, 255);
+        BOSS_SHADOW_RADIUS_EXT         = builder.defineInRange("BossShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
+        BOSS_SHADOW_OUTLINE_RED   = builder.defineInRange("BossShadowOutlineRed",   255, 0, 255);
+        BOSS_SHADOW_OUTLINE_GREEN = builder.defineInRange("BossShadowOutlineGreen", 0,   0, 255);
+        BOSS_SHADOW_OUTLINE_BLUE  = builder.defineInRange("BossShadowOutlineBlue",  0,   0, 255);
         BOSS_SHADOW_OUTLINE_ALPHA = builder.defineInRange("BossShadowOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("AttackableEntityTargetShadowOutline");
         CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR = builder.define("ChangeAttackableEntityTargetShadowOutlineColor", true);
-        ATTACKABLE_SHADOW_OUTLINE_RED = builder.defineInRange("AttackableShadowOutlineRed", 255, 0, 255);
+        ATTACKABLE_SHADOW_OUTLINE_RED   = builder.defineInRange("AttackableShadowOutlineRed",   255, 0, 255);
         ATTACKABLE_SHADOW_OUTLINE_GREEN = builder.defineInRange("AttackableShadowOutlineGreen", 255, 0, 255);
-        ATTACKABLE_SHADOW_OUTLINE_BLUE = builder.defineInRange("AttackableShadowOutlineBlue", 0, 0, 255);
+        ATTACKABLE_SHADOW_OUTLINE_BLUE  = builder.defineInRange("AttackableShadowOutlineBlue",  0,   0, 255);
         ATTACKABLE_SHADOW_OUTLINE_ALPHA = builder.defineInRange("AttackableShadowOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("OtherLivingEntityShadowOutline");
         ENTITY_SHADOW_OUTLINE_RENDERABLE = builder.define("LivingEntityShadowOutlineRenderable", true);
-        ENTITY_SHADOW_RADIUS_EXT = builder.defineInRange("LivingEntityShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
-        ENTITY_SHADOW_OUTLINE_RED = builder.defineInRange("LivingEntityShadowOutlineRed", 255, 0, 255);
+        ENTITY_SHADOW_RADIUS_EXT         = builder.defineInRange("LivingEntityShadowRadiusMultiplier", 1.75, 0, Integer.MAX_VALUE);
+        ENTITY_SHADOW_OUTLINE_RED   = builder.defineInRange("LivingEntityShadowOutlineRed",   255, 0, 255);
         ENTITY_SHADOW_OUTLINE_GREEN = builder.defineInRange("LivingEntityShadowOutlineGreen", 255, 0, 255);
-        ENTITY_SHADOW_OUTLINE_BLUE = builder.defineInRange("LivingEntityShadowOutlineBlue", 255, 0, 255);
+        ENTITY_SHADOW_OUTLINE_BLUE  = builder.defineInRange("LivingEntityShadowOutlineBlue",  255, 0, 255);
         ENTITY_SHADOW_OUTLINE_ALPHA = builder.defineInRange("LivingEntityShadowOutlineAlpha", 255, 0, 255);
         builder.pop();
         builder.push("EntityShadowOutlineOverride");
-        CUSTOM_SHADOW_RADIUS_EXT = builder.comment("Format: entityResourceLocation;multiplier. For example: [\"minecraft:skeleton;5.0\", \"minecraft:zombie;2.45\"]").defineList("CustomEntityShadowRadiusMultiplier", Lists.newArrayList(), obj -> obj instanceof String);
-        CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR = builder.comment("Format: entityResourceLocation;red;green;blue;alpha. For example: [\"minecraft:skeleton;128;255;70;255\", \"minecraft:zombie;60;90;45;255\"]").defineList("CustomEntityShadowOutline", Lists.newArrayList(), obj -> obj instanceof String);
+        CUSTOM_SHADOW_RADIUS_EXT = builder.comment("Format: entityResourceLocation;multiplier. For example: [\"minecraft:skeleton;5.0\", \"minecraft:zombie;2.45\"]")
+                .defineList("CustomEntityShadowRadiusMultiplier", Lists.newArrayList(), obj -> obj instanceof String);
+        CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR = builder.comment("Format: entityResourceLocation;red;green;blue;alpha. For example: [\"minecraft:skeleton;128;255;70;255\", \"minecraft:zombie;60;90;45;255\"]")
+                .defineList("CustomEntityShadowOutline", Lists.newArrayList(), obj -> obj instanceof String);
         builder.pop();
         builder.pop();
         builder.pop();
         LIGHT_TWEAK_CONFIG = builder.build();
     }
 
-    public static final Object2ObjectMap<ResourceLocation, OutlineColor> ENTITY_COLOR_MAP = Object2ObjectMaps.synchronize(new Object2ObjectOpenHashMap<>());
+    public static final Object2ObjectMap<ResourceLocation, OutlineColor> ENTITY_COLOR_MAP        = Object2ObjectMaps.synchronize(new Object2ObjectOpenHashMap<>());
     public static final Object2ObjectMap<ResourceLocation, OutlineColor> ENTITY_SHADOW_COLOR_MAP = Object2ObjectMaps.synchronize(new Object2ObjectOpenHashMap<>());
-    public static final Object2DoubleMap<ResourceLocation> ENTITY_SHADOW_RADIUS_MAP = Object2DoubleMaps.synchronize(new Object2DoubleOpenHashMap<>());
+    public static final Object2DoubleMap<ResourceLocation> ENTITY_SHADOW_RADIUS_MAP              = Object2DoubleMaps.synchronize(new Object2DoubleOpenHashMap<>());
 
     private static final Logger LOGGER = LogManager.getLogger(ItIsMeConfig.class);
 
@@ -155,12 +157,11 @@ public class ItIsMeConfig {
                 LOGGER.warn("Invalid entry {} for custom entity outline in Light Tweak config. Skipping.", entry);
                 continue;
             }
-            int red = Integer.parseInt(parts[1]);
+            int red   = Integer.parseInt(parts[1]);
             int green = Integer.parseInt(parts[2]);
-            int blue = Integer.parseInt(parts[3]);
+            int blue  = Integer.parseInt(parts[3]);
             int alpha = Integer.parseInt(parts[4]);
-            OutlineColor color = new OutlineColor(red, green, blue, alpha);
-            ENTITY_COLOR_MAP.put(id, color);
+            ENTITY_COLOR_MAP.put(id, new OutlineColor(red, green, blue, alpha));
         }
     }
 
@@ -172,13 +173,36 @@ public class ItIsMeConfig {
                 LOGGER.warn("Invalid entry {} for custom entity shadow outline in Light Tweak config. Skipping.", entry);
                 continue;
             }
-            int red = Integer.parseInt(parts[1]);
+            int red   = Integer.parseInt(parts[1]);
             int green = Integer.parseInt(parts[2]);
-            int blue = Integer.parseInt(parts[3]);
+            int blue  = Integer.parseInt(parts[3]);
             int alpha = Integer.parseInt(parts[4]);
-            OutlineColor color = new OutlineColor(red, green, blue, alpha);
-            ENTITY_SHADOW_COLOR_MAP.put(id, color);
+            ENTITY_SHADOW_COLOR_MAP.put(id, new OutlineColor(red, green, blue, alpha));
         }
+    }
+
+    public static void saveCustomEntityOutline() {
+        List<String> entries = new ObjectArrayList<>(ENTITY_COLOR_MAP.size());
+        for (Object2ObjectMap.Entry<ResourceLocation, OutlineColor> entry : ENTITY_COLOR_MAP.object2ObjectEntrySet()) {
+            entries.add(entry.getKey().toString() + ";" + entry.getValue().toString());
+        }
+        CUSTOM_ENTITY_OUTLINE_COLOR.set(entries);
+    }
+
+    public static void saveCustomEntityShadowOutline() {
+        List<String> entries = new ObjectArrayList<>(ENTITY_SHADOW_COLOR_MAP.size());
+        for (Object2ObjectMap.Entry<ResourceLocation, OutlineColor> entry : ENTITY_SHADOW_COLOR_MAP.object2ObjectEntrySet()) {
+            entries.add(entry.getKey().toString() + ";" + entry.getValue().toString());
+        }
+        CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR.set(entries);
+    }
+
+    public static void saveCustomEntityShadowRadius() {
+        List<String> entries = new ObjectArrayList<>(ENTITY_SHADOW_RADIUS_MAP.size());
+        for (Object2DoubleMap.Entry<ResourceLocation> entry : ENTITY_SHADOW_RADIUS_MAP.object2DoubleEntrySet()) {
+            entries.add(entry.getKey().toString() + ";" + entry.getDoubleValue());
+        }
+        CUSTOM_SHADOW_RADIUS_EXT.set(entries);
     }
 
     @SubscribeEvent
@@ -204,33 +228,55 @@ public class ItIsMeConfig {
         }
     }
 
+    // ── Queries ───────────────────────────────────────────────────────────────────
+
     public static @Nullable OutlineColor getEntityOutlineColor(Entity entity) {
-        if (CHANGE_ATTACKABLE_OUTLINE_COLOR.get() && Minecraft.getInstance().hitResult instanceof EntityHitResult hitResult && hitResult.getEntity().getUUID().equals(entity.getUUID())) {
-            return new OutlineColor(ATTACKABLE_OUTLINE_RED.get(), ATTACKABLE_OUTLINE_GREEN.get(), ATTACKABLE_OUTLINE_BLUE.get(), ATTACKABLE_OUTLINE_ALPHA.get());
-        } else if (entity instanceof Player) {
-            return new OutlineColor(PLAYER_OUTLINE_RED.get(), PLAYER_OUTLINE_GREEN.get(), PLAYER_OUTLINE_BLUE.get(), PLAYER_OUTLINE_ALPHA.get());
-        } else if (entity.getType().is(Tags.EntityTypes.BOSSES)) {
-            return new OutlineColor(BOSS_OUTLINE_RED.get(), BOSS_OUTLINE_GREEN.get(), BOSS_OUTLINE_BLUE.get(), BOSS_OUTLINE_ALPHA.get());
+        if (CHANGE_ATTACKABLE_OUTLINE_COLOR.get()
+                && Minecraft.getInstance().hitResult instanceof EntityHitResult hitResult
+                && hitResult.getEntity().getUUID().equals(entity.getUUID())) {
+            return new OutlineColor(
+                    ATTACKABLE_OUTLINE_RED.get(), ATTACKABLE_OUTLINE_GREEN.get(),
+                    ATTACKABLE_OUTLINE_BLUE.get(), ATTACKABLE_OUTLINE_ALPHA.get());
         } else if (ENTITY_COLOR_MAP.containsKey(RegistryEntry.get(entity))) {
             return ENTITY_COLOR_MAP.get(RegistryEntry.get(entity));
+        } else if (entity instanceof Player) {
+            return new OutlineColor(
+                    PLAYER_OUTLINE_RED.get(), PLAYER_OUTLINE_GREEN.get(),
+                    PLAYER_OUTLINE_BLUE.get(), PLAYER_OUTLINE_ALPHA.get());
+        } else if (entity.getType().is(Tags.EntityTypes.BOSSES)) {
+            return new OutlineColor(
+                    BOSS_OUTLINE_RED.get(), BOSS_OUTLINE_GREEN.get(),
+                    BOSS_OUTLINE_BLUE.get(), BOSS_OUTLINE_ALPHA.get());
         } else if (entity instanceof LivingEntity) {
-            return new OutlineColor(ENTITY_OUTLINE_RED.get(), ENTITY_OUTLINE_GREEN.get(), ENTITY_OUTLINE_BLUE.get(), ENTITY_OUTLINE_ALPHA.get());
+            return new OutlineColor(
+                    ENTITY_OUTLINE_RED.get(), ENTITY_OUTLINE_GREEN.get(),
+                    ENTITY_OUTLINE_BLUE.get(), ENTITY_OUTLINE_ALPHA.get());
         } else {
             return null;
         }
     }
 
     public static @Nullable OutlineColor getEntityShadowOutlineColor(Entity entity) {
-        if (CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR.get() && Minecraft.getInstance().hitResult instanceof EntityHitResult hitResult && hitResult.getEntity().getUUID().equals(entity.getUUID())) {
-            return new OutlineColor(ATTACKABLE_SHADOW_OUTLINE_RED.get(), ATTACKABLE_SHADOW_OUTLINE_GREEN.get(), ATTACKABLE_SHADOW_OUTLINE_BLUE.get(), ATTACKABLE_SHADOW_OUTLINE_ALPHA.get());
-        } else if (entity instanceof Player) {
-            return new OutlineColor(PLAYER_SHADOW_OUTLINE_RED.get(), PLAYER_SHADOW_OUTLINE_GREEN.get(), PLAYER_SHADOW_OUTLINE_BLUE.get(), PLAYER_SHADOW_OUTLINE_ALPHA.get());
-        } else if (entity.getType().is(Tags.EntityTypes.BOSSES)) {
-            return new OutlineColor(BOSS_SHADOW_OUTLINE_RED.get(), BOSS_SHADOW_OUTLINE_GREEN.get(), BOSS_SHADOW_OUTLINE_BLUE.get(), BOSS_SHADOW_OUTLINE_ALPHA.get());
+        if (CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR.get()
+                && Minecraft.getInstance().hitResult instanceof EntityHitResult hitResult
+                && hitResult.getEntity().getUUID().equals(entity.getUUID())) {
+            return new OutlineColor(
+                    ATTACKABLE_SHADOW_OUTLINE_RED.get(), ATTACKABLE_SHADOW_OUTLINE_GREEN.get(),
+                    ATTACKABLE_SHADOW_OUTLINE_BLUE.get(), ATTACKABLE_SHADOW_OUTLINE_ALPHA.get());
         } else if (ENTITY_SHADOW_COLOR_MAP.containsKey(RegistryEntry.get(entity))) {
             return ENTITY_SHADOW_COLOR_MAP.get(RegistryEntry.get(entity));
+        } else if (entity instanceof Player) {
+            return new OutlineColor(
+                    PLAYER_SHADOW_OUTLINE_RED.get(), PLAYER_SHADOW_OUTLINE_GREEN.get(),
+                    PLAYER_SHADOW_OUTLINE_BLUE.get(), PLAYER_SHADOW_OUTLINE_ALPHA.get());
+        } else if (entity.getType().is(Tags.EntityTypes.BOSSES)) {
+            return new OutlineColor(
+                    BOSS_SHADOW_OUTLINE_RED.get(), BOSS_SHADOW_OUTLINE_GREEN.get(),
+                    BOSS_SHADOW_OUTLINE_BLUE.get(), BOSS_SHADOW_OUTLINE_ALPHA.get());
         } else if (entity instanceof LivingEntity) {
-            return new OutlineColor(ENTITY_SHADOW_OUTLINE_RED.get(), ENTITY_SHADOW_OUTLINE_GREEN.get(), ENTITY_SHADOW_OUTLINE_BLUE.get(), ENTITY_SHADOW_OUTLINE_ALPHA.get());
+            return new OutlineColor(
+                    ENTITY_SHADOW_OUTLINE_RED.get(), ENTITY_SHADOW_OUTLINE_GREEN.get(),
+                    ENTITY_SHADOW_OUTLINE_BLUE.get(), ENTITY_SHADOW_OUTLINE_ALPHA.get());
         } else {
             return null;
         }
