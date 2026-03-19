@@ -17,11 +17,23 @@
   "config.itisme.boss_outline_blue.name": "Boss Outline Blue",
   "config.itisme.boss_outline_alpha.name": "Boss Outline Alpha",
 
-  "config.itisme.entity_outline_renderable.name": "Living Entity Outline Renderable",
-  "config.itisme.entity_outline_red.name": "Living Entity Outline Red",
-  "config.itisme.entity_outline_green.name": "Living Entity Outline Green",
-  "config.itisme.entity_outline_blue.name": "Living Entity Outline Blue",
-  "config.itisme.entity_outline_alpha.name": "Living Entity Outline Alpha",
+  "config.itisme.neutral_outline_renderable.name": "Neutral Entity Outline Renderable",
+  "config.itisme.neutral_outline_red.name": "Neutral Entity Outline Red",
+  "config.itisme.neutral_outline_green.name": "Neutral Entity Outline Green",
+  "config.itisme.neutral_outline_blue.name": "Neutral Entity Outline Blue",
+  "config.itisme.neutral_outline_alpha.name": "Neutral Entity Outline Alpha",
+
+  "config.itisme.hostile_outline_renderable.name": "Hostile Entity Outline Renderable",
+  "config.itisme.hostile_outline_red.name": "Hostile Entity Outline Red",
+  "config.itisme.hostile_outline_green.name": "Hostile Entity Outline Green",
+  "config.itisme.hostile_outline_blue.name": "Hostile Entity Outline Blue",
+  "config.itisme.hostile_outline_alpha.name": "Hostile Entity Outline Alpha",
+
+  "config.itisme.entity_outline_renderable.name": "Passive Entity Outline Renderable",
+  "config.itisme.entity_outline_red.name": "Passive Entity Outline Red",
+  "config.itisme.entity_outline_green.name": "Passive Entity Outline Green",
+  "config.itisme.entity_outline_blue.name": "Passive Entity Outline Blue",
+  "config.itisme.entity_outline_alpha.name": "Passive Entity Outline Alpha",
 
   "config.itisme.entity_outline_page": "Entity Outline",
 
@@ -45,12 +57,26 @@
   "config.itisme.boss_shadow_outline_blue.name": "Boss Shadow Outline Blue",
   "config.itisme.boss_shadow_outline_alpha.name": "Boss Shadow Outline Alpha",
 
-  "config.itisme.entity_shadow_outline_renderable.name": "Living Entity Shadow Outline Renderable",
-  "config.itisme.entity_shadow_outline_radius_multiplier.name": "Living Entity Shadow Radius Multiplier (×0.01)",
-  "config.itisme.entity_shadow_outline_red.name": "Living Entity Shadow Outline Red",
-  "config.itisme.entity_shadow_outline_green.name": "Living Entity Shadow Outline Green",
-  "config.itisme.entity_shadow_outline_blue.name": "Living Entity Shadow Outline Blue",
-  "config.itisme.entity_shadow_outline_alpha.name": "Living Entity Shadow Outline Alpha",
+  "config.itisme.neutral_shadow_outline_renderable.name": "Neutral Entity Shadow Outline Renderable",
+  "config.itisme.neutral_shadow_outline_radius_multiplier.name": "Neutral Entity Shadow Radius Multiplier (×0.01)",
+  "config.itisme.neutral_shadow_outline_red.name": "Neutral Entity Shadow Outline Red",
+  "config.itisme.neutral_shadow_outline_green.name": "Neutral Entity Shadow Outline Green",
+  "config.itisme.neutral_shadow_outline_blue.name": "Neutral Entity Shadow Outline Blue",
+  "config.itisme.neutral_shadow_outline_alpha.name": "Neutral Entity Shadow Outline Alpha",
+
+  "config.itisme.hostile_shadow_outline_renderable.name": "Hostile Entity Shadow Outline Renderable",
+  "config.itisme.hostile_shadow_outline_radius_multiplier.name": "Hostile Entity Shadow Radius Multiplier (×0.01)",
+  "config.itisme.hostile_shadow_outline_red.name": "Hostile Entity Shadow Outline Red",
+  "config.itisme.hostile_shadow_outline_green.name": "Hostile Entity Shadow Outline Green",
+  "config.itisme.hostile_shadow_outline_blue.name": "Hostile Entity Shadow Outline Blue",
+  "config.itisme.hostile_shadow_outline_alpha.name": "Hostile Entity Shadow Outline Alpha",
+
+  "config.itisme.entity_shadow_outline_renderable.name": "Passive Entity Shadow Outline Renderable",
+  "config.itisme.entity_shadow_outline_radius_multiplier.name": "Passive Entity Shadow Radius Multiplier (×0.01)",
+  "config.itisme.entity_shadow_outline_red.name": "Passive Entity Shadow Outline Red",
+  "config.itisme.entity_shadow_outline_green.name": "Passive Entity Shadow Outline Green",
+  "config.itisme.entity_shadow_outline_blue.name": "Passive Entity Shadow Outline Blue",
+  "config.itisme.entity_shadow_outline_alpha.name": "Passive Entity Shadow Outline Alpha",
 
   "config.itisme.entity_shadow_outline_page": "Entity Shadow Outline",
 
