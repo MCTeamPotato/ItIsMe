@@ -38,7 +38,7 @@ import java.util.function.Supplier;
 
 @SuppressWarnings("SameParameterValue")
 public class SodiumIntegration {
-    private static final SodiumOptionsStorage sodiumOpts = new SodiumOptionsStorage();
+    private static final SodiumOptionsStorage PLACEHOLDER = new SodiumOptionsStorage();
 
     private static final int MAX_GROUPS_PER_PAGE = 30;
 
@@ -51,120 +51,35 @@ public class SodiumIntegration {
     private static void registerConfig(@NotNull OptionGUIConstructionEvent event) {
         OptionGroup generalGroup = OptionGroup.createBuilder()
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, "general_group"))
-                .add(createIntOption("outline_renderable_dist", 0, 512, 1,
-                        ItIsMeConfig.OUTLINE_RENDERABLE_DIST,
-                        ItIsMeConfig.OUTLINE_RENDERABLE_DIST::set))
+                .add(createIntOption("outline_renderable_dist", 0, 512, 1, ItIsMeConfig.OUTLINE_RENDERABLE_DIST, ItIsMeConfig.OUTLINE_RENDERABLE_DIST::set))
                 .build();
 
-        OptionPage generalPage = new OptionPage(
-                OptionIdentifier.create(ItIsMe.MOD_ID, "general_page"),
-                Component.translatable("config.itisme.general_page"),
-                ImmutableList.of(generalGroup));
+        OptionIdentifier<Void> generalPageID = OptionIdentifier.create(ItIsMe.MOD_ID, "general_page");
+        OptionPage generalPage = new OptionPage(generalPageID, Component.translatable("config.itisme.general_page"), ImmutableList.of(generalGroup));
 
         event.addPage(generalPage);
 
-        OptionGroup playerOutlineGroup = createOutlineGroup("player_outline",
-                ItIsMeConfig.PLAYER_OUTLINE_RENDERABLE, ItIsMeConfig.PLAYER_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.PLAYER_OUTLINE_RED,        ItIsMeConfig.PLAYER_OUTLINE_RED::set,
-                ItIsMeConfig.PLAYER_OUTLINE_GREEN,      ItIsMeConfig.PLAYER_OUTLINE_GREEN::set,
-                ItIsMeConfig.PLAYER_OUTLINE_BLUE,       ItIsMeConfig.PLAYER_OUTLINE_BLUE::set,
-                ItIsMeConfig.PLAYER_OUTLINE_ALPHA,      ItIsMeConfig.PLAYER_OUTLINE_ALPHA::set);
+        OptionGroup playerOutlineGroup = createOutlineGroup("player_outline", ItIsMeConfig.PLAYER_OUTLINE_RENDERABLE, ItIsMeConfig.PLAYER_OUTLINE_RENDERABLE::set, ItIsMeConfig.PLAYER_OUTLINE_RED, ItIsMeConfig.PLAYER_OUTLINE_RED::set, ItIsMeConfig.PLAYER_OUTLINE_GREEN, ItIsMeConfig.PLAYER_OUTLINE_GREEN::set, ItIsMeConfig.PLAYER_OUTLINE_BLUE, ItIsMeConfig.PLAYER_OUTLINE_BLUE::set, ItIsMeConfig.PLAYER_OUTLINE_ALPHA, ItIsMeConfig.PLAYER_OUTLINE_ALPHA::set);
+        OptionGroup bossOutlineGroup = createOutlineGroup("boss_outline", ItIsMeConfig.BOSS_OUTLINE_RENDERABLE, ItIsMeConfig.BOSS_OUTLINE_RENDERABLE::set, ItIsMeConfig.BOSS_OUTLINE_RED, ItIsMeConfig.BOSS_OUTLINE_RED::set, ItIsMeConfig.BOSS_OUTLINE_GREEN, ItIsMeConfig.BOSS_OUTLINE_GREEN::set, ItIsMeConfig.BOSS_OUTLINE_BLUE, ItIsMeConfig.BOSS_OUTLINE_BLUE::set, ItIsMeConfig.BOSS_OUTLINE_ALPHA, ItIsMeConfig.BOSS_OUTLINE_ALPHA::set);
+        OptionGroup attackableOutlineGroup = createOutlineGroup("attackable_outline", ItIsMeConfig.CHANGE_ATTACKABLE_OUTLINE_COLOR, ItIsMeConfig.CHANGE_ATTACKABLE_OUTLINE_COLOR::set, ItIsMeConfig.ATTACKABLE_OUTLINE_RED, ItIsMeConfig.ATTACKABLE_OUTLINE_RED::set, ItIsMeConfig.ATTACKABLE_OUTLINE_GREEN, ItIsMeConfig.ATTACKABLE_OUTLINE_GREEN::set, ItIsMeConfig.ATTACKABLE_OUTLINE_BLUE, ItIsMeConfig.ATTACKABLE_OUTLINE_BLUE::set, ItIsMeConfig.ATTACKABLE_OUTLINE_ALPHA, ItIsMeConfig.ATTACKABLE_OUTLINE_ALPHA::set);
+        OptionGroup neutralOutlineGroup = createOutlineGroup("neutral_outline", ItIsMeConfig.NEUTRAL_OUTLINE_RENDERABLE, ItIsMeConfig.NEUTRAL_OUTLINE_RENDERABLE::set, ItIsMeConfig.NEUTRAL_OUTLINE_RED, ItIsMeConfig.NEUTRAL_OUTLINE_RED::set, ItIsMeConfig.NEUTRAL_OUTLINE_GREEN, ItIsMeConfig.NEUTRAL_OUTLINE_GREEN::set, ItIsMeConfig.NEUTRAL_OUTLINE_BLUE, ItIsMeConfig.NEUTRAL_OUTLINE_BLUE::set, ItIsMeConfig.NEUTRAL_OUTLINE_ALPHA, ItIsMeConfig.NEUTRAL_OUTLINE_ALPHA::set);
+        OptionGroup hostileOutlineGroup = createOutlineGroup("hostile_outline", ItIsMeConfig.HOSTILE_OUTLINE_RENDERABLE, ItIsMeConfig.HOSTILE_OUTLINE_RENDERABLE::set, ItIsMeConfig.HOSTILE_OUTLINE_RED, ItIsMeConfig.HOSTILE_OUTLINE_RED::set, ItIsMeConfig.HOSTILE_OUTLINE_GREEN, ItIsMeConfig.HOSTILE_OUTLINE_GREEN::set, ItIsMeConfig.HOSTILE_OUTLINE_BLUE, ItIsMeConfig.HOSTILE_OUTLINE_BLUE::set, ItIsMeConfig.HOSTILE_OUTLINE_ALPHA, ItIsMeConfig.HOSTILE_OUTLINE_ALPHA::set);
+        OptionGroup entityOutlineGroup = createOutlineGroup("entity_outline", ItIsMeConfig.ENTITY_OUTLINE_RENDERABLE, ItIsMeConfig.ENTITY_OUTLINE_RENDERABLE::set, ItIsMeConfig.ENTITY_OUTLINE_RED, ItIsMeConfig.ENTITY_OUTLINE_RED::set, ItIsMeConfig.ENTITY_OUTLINE_GREEN, ItIsMeConfig.ENTITY_OUTLINE_GREEN::set, ItIsMeConfig.ENTITY_OUTLINE_BLUE, ItIsMeConfig.ENTITY_OUTLINE_BLUE::set, ItIsMeConfig.ENTITY_OUTLINE_ALPHA, ItIsMeConfig.ENTITY_OUTLINE_ALPHA::set);
 
-        OptionGroup bossOutlineGroup = createOutlineGroup("boss_outline",
-                ItIsMeConfig.BOSS_OUTLINE_RENDERABLE, ItIsMeConfig.BOSS_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.BOSS_OUTLINE_RED,        ItIsMeConfig.BOSS_OUTLINE_RED::set,
-                ItIsMeConfig.BOSS_OUTLINE_GREEN,      ItIsMeConfig.BOSS_OUTLINE_GREEN::set,
-                ItIsMeConfig.BOSS_OUTLINE_BLUE,       ItIsMeConfig.BOSS_OUTLINE_BLUE::set,
-                ItIsMeConfig.BOSS_OUTLINE_ALPHA,      ItIsMeConfig.BOSS_OUTLINE_ALPHA::set);
-
-        OptionGroup attackableOutlineGroup = createOutlineGroup("attackable_outline",
-                ItIsMeConfig.CHANGE_ATTACKABLE_OUTLINE_COLOR, ItIsMeConfig.CHANGE_ATTACKABLE_OUTLINE_COLOR::set,
-                ItIsMeConfig.ATTACKABLE_OUTLINE_RED,          ItIsMeConfig.ATTACKABLE_OUTLINE_RED::set,
-                ItIsMeConfig.ATTACKABLE_OUTLINE_GREEN,        ItIsMeConfig.ATTACKABLE_OUTLINE_GREEN::set,
-                ItIsMeConfig.ATTACKABLE_OUTLINE_BLUE,         ItIsMeConfig.ATTACKABLE_OUTLINE_BLUE::set,
-                ItIsMeConfig.ATTACKABLE_OUTLINE_ALPHA,        ItIsMeConfig.ATTACKABLE_OUTLINE_ALPHA::set);
-
-        OptionGroup neutralOutlineGroup = createOutlineGroup("neutral_outline",
-                ItIsMeConfig.NEUTRAL_OUTLINE_RENDERABLE, ItIsMeConfig.NEUTRAL_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.NEUTRAL_OUTLINE_RED,        ItIsMeConfig.NEUTRAL_OUTLINE_RED::set,
-                ItIsMeConfig.NEUTRAL_OUTLINE_GREEN,      ItIsMeConfig.NEUTRAL_OUTLINE_GREEN::set,
-                ItIsMeConfig.NEUTRAL_OUTLINE_BLUE,       ItIsMeConfig.NEUTRAL_OUTLINE_BLUE::set,
-                ItIsMeConfig.NEUTRAL_OUTLINE_ALPHA,      ItIsMeConfig.NEUTRAL_OUTLINE_ALPHA::set);
-
-        OptionGroup hostileOutlineGroup = createOutlineGroup("hostile_outline",
-                ItIsMeConfig.HOSTILE_OUTLINE_RENDERABLE, ItIsMeConfig.HOSTILE_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.HOSTILE_OUTLINE_RED,        ItIsMeConfig.HOSTILE_OUTLINE_RED::set,
-                ItIsMeConfig.HOSTILE_OUTLINE_GREEN,      ItIsMeConfig.HOSTILE_OUTLINE_GREEN::set,
-                ItIsMeConfig.HOSTILE_OUTLINE_BLUE,       ItIsMeConfig.HOSTILE_OUTLINE_BLUE::set,
-                ItIsMeConfig.HOSTILE_OUTLINE_ALPHA,      ItIsMeConfig.HOSTILE_OUTLINE_ALPHA::set);
-
-        OptionGroup entityOutlineGroup = createOutlineGroup("entity_outline",
-                ItIsMeConfig.ENTITY_OUTLINE_RENDERABLE, ItIsMeConfig.ENTITY_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.ENTITY_OUTLINE_RED,        ItIsMeConfig.ENTITY_OUTLINE_RED::set,
-                ItIsMeConfig.ENTITY_OUTLINE_GREEN,      ItIsMeConfig.ENTITY_OUTLINE_GREEN::set,
-                ItIsMeConfig.ENTITY_OUTLINE_BLUE,       ItIsMeConfig.ENTITY_OUTLINE_BLUE::set,
-                ItIsMeConfig.ENTITY_OUTLINE_ALPHA,      ItIsMeConfig.ENTITY_OUTLINE_ALPHA::set);
-
-        OptionPage entityOutlinePage = new OptionPage(
-                OptionIdentifier.create(ItIsMe.MOD_ID, "entity_outline_page"),
-                Component.translatable("config.itisme.entity_outline_page"),
-                ImmutableList.of(playerOutlineGroup, bossOutlineGroup, attackableOutlineGroup,
-                        neutralOutlineGroup, hostileOutlineGroup, entityOutlineGroup));
+        OptionIdentifier<Void> entityOutlinePageID = OptionIdentifier.create(ItIsMe.MOD_ID, "entity_outline_page");
+        OptionPage entityOutlinePage = new OptionPage(entityOutlinePageID, Component.translatable("config.itisme.entity_outline_page"), ImmutableList.of(playerOutlineGroup, bossOutlineGroup, attackableOutlineGroup, neutralOutlineGroup, hostileOutlineGroup, entityOutlineGroup));
 
         event.addPage(entityOutlinePage);
 
-        OptionGroup playerShadowOutlineGroup = createShadowOutlineGroup("player_shadow_outline",
-                ItIsMeConfig.PLAYER_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.PLAYER_SHADOW_RADIUS_EXT,         ItIsMeConfig.PLAYER_SHADOW_RADIUS_EXT::set,
-                ItIsMeConfig.PLAYER_SHADOW_OUTLINE_RED,        ItIsMeConfig.PLAYER_SHADOW_OUTLINE_RED::set,
-                ItIsMeConfig.PLAYER_SHADOW_OUTLINE_GREEN,      ItIsMeConfig.PLAYER_SHADOW_OUTLINE_GREEN::set,
-                ItIsMeConfig.PLAYER_SHADOW_OUTLINE_BLUE,       ItIsMeConfig.PLAYER_SHADOW_OUTLINE_BLUE::set,
-                ItIsMeConfig.PLAYER_SHADOW_OUTLINE_ALPHA,      ItIsMeConfig.PLAYER_SHADOW_OUTLINE_ALPHA::set);
+        OptionGroup playerShadowOutlineGroup = createShadowOutlineGroup("player_shadow_outline", ItIsMeConfig.PLAYER_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_RENDERABLE::set, ItIsMeConfig.PLAYER_SHADOW_RADIUS_EXT, ItIsMeConfig.PLAYER_SHADOW_RADIUS_EXT::set, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_RED, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_RED::set, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_GREEN, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_GREEN::set, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_BLUE, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_BLUE::set, ItIsMeConfig.PLAYER_SHADOW_OUTLINE_ALPHA,ItIsMeConfig.PLAYER_SHADOW_OUTLINE_ALPHA::set);
+        OptionGroup bossShadowOutlineGroup = createShadowOutlineGroup("boss_shadow_outline", ItIsMeConfig.BOSS_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.BOSS_SHADOW_OUTLINE_RENDERABLE::set, ItIsMeConfig.BOSS_SHADOW_RADIUS_EXT, ItIsMeConfig.BOSS_SHADOW_RADIUS_EXT::set, ItIsMeConfig.BOSS_SHADOW_OUTLINE_RED, ItIsMeConfig.BOSS_SHADOW_OUTLINE_RED::set, ItIsMeConfig.BOSS_SHADOW_OUTLINE_GREEN, ItIsMeConfig.BOSS_SHADOW_OUTLINE_GREEN::set, ItIsMeConfig.BOSS_SHADOW_OUTLINE_BLUE, ItIsMeConfig.BOSS_SHADOW_OUTLINE_BLUE::set, ItIsMeConfig.BOSS_SHADOW_OUTLINE_ALPHA, ItIsMeConfig.BOSS_SHADOW_OUTLINE_ALPHA::set);
+        OptionGroup attackableShadowOutlineGroup = createOutlineGroup("attackable_shadow_outline", ItIsMeConfig.CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR, ItIsMeConfig.CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR::set, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_RED, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_RED::set, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_GREEN, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_GREEN::set, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_BLUE, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_BLUE::set, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_ALPHA, ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_ALPHA::set);
+        OptionGroup neutralShadowOutlineGroup = createShadowOutlineGroup("neutral_shadow_outline", ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_RENDERABLE::set, ItIsMeConfig.NEUTRAL_SHADOW_RADIUS_EXT, ItIsMeConfig.NEUTRAL_SHADOW_RADIUS_EXT::set, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_RED, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_RED::set, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_GREEN, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_GREEN::set, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_BLUE, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_BLUE::set, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_ALPHA, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_ALPHA::set);
+        OptionGroup hostileShadowOutlineGroup = createShadowOutlineGroup("hostile_shadow_outline", ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_RENDERABLE::set, ItIsMeConfig.HOSTILE_SHADOW_RADIUS_EXT, ItIsMeConfig.HOSTILE_SHADOW_RADIUS_EXT::set, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_RED, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_RED::set, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_GREEN, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_GREEN::set, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_BLUE, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_BLUE::set, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_ALPHA, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_ALPHA::set);
+        OptionGroup entityShadowOutlineGroup = createShadowOutlineGroup("entity_shadow_outline", ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RENDERABLE::set, ItIsMeConfig.ENTITY_SHADOW_RADIUS_EXT, ItIsMeConfig.ENTITY_SHADOW_RADIUS_EXT::set, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RED, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RED::set, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_GREEN, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_GREEN::set, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_BLUE, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_BLUE::set, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_ALPHA, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_ALPHA::set);
 
-        OptionGroup bossShadowOutlineGroup = createShadowOutlineGroup("boss_shadow_outline",
-                ItIsMeConfig.BOSS_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.BOSS_SHADOW_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.BOSS_SHADOW_RADIUS_EXT,         ItIsMeConfig.BOSS_SHADOW_RADIUS_EXT::set,
-                ItIsMeConfig.BOSS_SHADOW_OUTLINE_RED,        ItIsMeConfig.BOSS_SHADOW_OUTLINE_RED::set,
-                ItIsMeConfig.BOSS_SHADOW_OUTLINE_GREEN,      ItIsMeConfig.BOSS_SHADOW_OUTLINE_GREEN::set,
-                ItIsMeConfig.BOSS_SHADOW_OUTLINE_BLUE,       ItIsMeConfig.BOSS_SHADOW_OUTLINE_BLUE::set,
-                ItIsMeConfig.BOSS_SHADOW_OUTLINE_ALPHA,      ItIsMeConfig.BOSS_SHADOW_OUTLINE_ALPHA::set);
-
-        OptionGroup attackableShadowOutlineGroup = createOutlineGroup("attackable_shadow_outline",
-                ItIsMeConfig.CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR, ItIsMeConfig.CHANGE_ATTACKABLE_SHADOW_OUTLINE_COLOR::set,
-                ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_RED,          ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_RED::set,
-                ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_GREEN,        ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_GREEN::set,
-                ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_BLUE,         ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_BLUE::set,
-                ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_ALPHA,        ItIsMeConfig.ATTACKABLE_SHADOW_OUTLINE_ALPHA::set);
-
-        OptionGroup neutralShadowOutlineGroup = createShadowOutlineGroup("neutral_shadow_outline",
-                ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.NEUTRAL_SHADOW_RADIUS_EXT,         ItIsMeConfig.NEUTRAL_SHADOW_RADIUS_EXT::set,
-                ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_RED,        ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_RED::set,
-                ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_GREEN,      ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_GREEN::set,
-                ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_BLUE,       ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_BLUE::set,
-                ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_ALPHA,      ItIsMeConfig.NEUTRAL_SHADOW_OUTLINE_ALPHA::set);
-
-        OptionGroup hostileShadowOutlineGroup = createShadowOutlineGroup("hostile_shadow_outline",
-                ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.HOSTILE_SHADOW_RADIUS_EXT,         ItIsMeConfig.HOSTILE_SHADOW_RADIUS_EXT::set,
-                ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_RED,        ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_RED::set,
-                ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_GREEN,      ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_GREEN::set,
-                ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_BLUE,       ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_BLUE::set,
-                ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_ALPHA,      ItIsMeConfig.HOSTILE_SHADOW_OUTLINE_ALPHA::set);
-
-        OptionGroup entityShadowOutlineGroup = createShadowOutlineGroup("entity_shadow_outline",
-                ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RENDERABLE, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RENDERABLE::set,
-                ItIsMeConfig.ENTITY_SHADOW_RADIUS_EXT,         ItIsMeConfig.ENTITY_SHADOW_RADIUS_EXT::set,
-                ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RED,        ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RED::set,
-                ItIsMeConfig.ENTITY_SHADOW_OUTLINE_GREEN,      ItIsMeConfig.ENTITY_SHADOW_OUTLINE_GREEN::set,
-                ItIsMeConfig.ENTITY_SHADOW_OUTLINE_BLUE,       ItIsMeConfig.ENTITY_SHADOW_OUTLINE_BLUE::set,
-                ItIsMeConfig.ENTITY_SHADOW_OUTLINE_ALPHA,      ItIsMeConfig.ENTITY_SHADOW_OUTLINE_ALPHA::set);
-
-        OptionPage entityShadowOutlinePage = new OptionPage(
-                OptionIdentifier.create(ItIsMe.MOD_ID, "entity_shadow_outline_page"),
-                Component.translatable("config.itisme.entity_shadow_outline_page"),
-                ImmutableList.of(playerShadowOutlineGroup, bossShadowOutlineGroup, attackableShadowOutlineGroup,
-                        neutralShadowOutlineGroup, hostileShadowOutlineGroup, entityShadowOutlineGroup));
+        OptionIdentifier<Void> entityShadowOutlinePageID = OptionIdentifier.create(ItIsMe.MOD_ID, "entity_shadow_outline_page");
+        OptionPage entityShadowOutlinePage = new OptionPage(entityShadowOutlinePageID, Component.translatable("config.itisme.entity_shadow_outline_page"), ImmutableList.of(playerShadowOutlineGroup, bossShadowOutlineGroup, attackableShadowOutlineGroup, neutralShadowOutlineGroup, hostileShadowOutlineGroup, entityShadowOutlineGroup));
 
         event.addPage(entityShadowOutlinePage);
 
@@ -176,7 +91,7 @@ public class SodiumIntegration {
                 .sorted(Comparator.comparing(e -> e.getValue().getDescription().getString(), collator))
                 .toList();
 
-        ImmutableList.Builder<OptionGroup> customEntityOutlineGroups       = new ImmutableList.Builder<>();
+        ImmutableList.Builder<OptionGroup> customEntityOutlineGroups = new ImmutableList.Builder<>();
         ImmutableList.Builder<OptionGroup> customEntityShadowOutlineGroups = new ImmutableList.Builder<>();
 
         for (Map.Entry<ResourceKey<EntityType<?>>, EntityType<?>> entry : entities) {
@@ -185,19 +100,8 @@ public class SodiumIntegration {
             if (type.getCategory().equals(MobCategory.MISC)) continue;
             String parsable = id.toString().replace(":", "");
 
-            customEntityOutlineGroups.add(createCustomEntityOutlineGroup(
-                    parsable, type, "",
-                    ItIsMeConfig.ENTITY_COLOR_MAP, ItIsMeConfig::saveCustomEntityOutline,
-                    null, null,
-                    ItIsMeConfig.ENTITY_OUTLINE_RED,   ItIsMeConfig.ENTITY_OUTLINE_GREEN,
-                    ItIsMeConfig.ENTITY_OUTLINE_BLUE,  ItIsMeConfig.ENTITY_OUTLINE_ALPHA));
-
-            customEntityShadowOutlineGroups.add(createCustomEntityOutlineGroup(
-                    parsable, type, "shadow",
-                    ItIsMeConfig.ENTITY_SHADOW_COLOR_MAP, ItIsMeConfig::saveCustomEntityShadowOutline,
-                    ItIsMeConfig.ENTITY_SHADOW_RADIUS_MAP, ItIsMeConfig::saveCustomEntityShadowRadius,
-                    ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RED,   ItIsMeConfig.ENTITY_SHADOW_OUTLINE_GREEN,
-                    ItIsMeConfig.ENTITY_SHADOW_OUTLINE_BLUE,  ItIsMeConfig.ENTITY_SHADOW_OUTLINE_ALPHA));
+            customEntityOutlineGroups.add(createCustomEntityOutlineGroup(parsable, type, "", ItIsMeConfig.ENTITY_COLOR_MAP, ItIsMeConfig::saveCustomEntityOutline, null, null, ItIsMeConfig.ENTITY_OUTLINE_RED,   ItIsMeConfig.ENTITY_OUTLINE_GREEN, ItIsMeConfig.ENTITY_OUTLINE_BLUE,  ItIsMeConfig.ENTITY_OUTLINE_ALPHA));
+            customEntityShadowOutlineGroups.add(createCustomEntityOutlineGroup(parsable, type, "shadow", ItIsMeConfig.ENTITY_SHADOW_COLOR_MAP, ItIsMeConfig::saveCustomEntityShadowOutline, ItIsMeConfig.ENTITY_SHADOW_RADIUS_MAP, ItIsMeConfig::saveCustomEntityShadowRadius, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_RED,   ItIsMeConfig.ENTITY_SHADOW_OUTLINE_GREEN, ItIsMeConfig.ENTITY_SHADOW_OUTLINE_BLUE,  ItIsMeConfig.ENTITY_SHADOW_OUTLINE_ALPHA));
         }
 
         addPagesPaginated(event, "custom_entity_outline_page", Component.translatable("config.itisme.custom_entity_outline_page"), customEntityOutlineGroups.build());
@@ -205,27 +109,22 @@ public class SodiumIntegration {
     }
 
     private static void addPagesPaginated(OptionGUIConstructionEvent event, String basePageId, Component baseTitle, @NotNull List<OptionGroup> groups) {
-        int total     = groups.size();
+        int total = groups.size();
         int pageCount = (total + MAX_GROUPS_PER_PAGE - 1) / MAX_GROUPS_PER_PAGE;
 
-        for (int i = 0; i < pageCount; i++) {
-            int from = i * MAX_GROUPS_PER_PAGE;
-            int to   = Math.min(from + MAX_GROUPS_PER_PAGE, total);
+        for (int pageIndex = 0; pageIndex < pageCount; pageIndex++) {
+            int from = pageIndex * MAX_GROUPS_PER_PAGE;
+            int to = Math.min(from + MAX_GROUPS_PER_PAGE, total);
 
-            Component title = pageCount > 1 ? baseTitle.copy().append(Component.literal(" (" + (i + 1) + "/" + pageCount + ")")) : baseTitle;
+            Component title = pageCount > 1 ? baseTitle.copy().append(Component.literal(" (" + (pageIndex + 1) + "/" + pageCount + ")")) : baseTitle;
 
-            OptionPage page = new OptionPage(
-                    OptionIdentifier.create(ItIsMe.MOD_ID, basePageId + (pageCount > 1 ? "_" + (i + 1) : "")),
-                    title,
-                    ImmutableList.copyOf(groups.subList(from, to)));
-
+            OptionPage page = new OptionPage(OptionIdentifier.create(ItIsMe.MOD_ID, basePageId + (pageCount > 1 ? "_" + (pageIndex + 1) : "")), title, ImmutableList.copyOf(groups.subList(from, to)));
             event.addPage(page);
         }
     }
 
-    private static OptionImpl<SodiumGameOptions, Boolean> createBooleanOption(
-            String key, Supplier<Boolean> getter, Consumer<Boolean> setter) {
-        return OptionImpl.createBuilder(Boolean.TYPE, sodiumOpts)
+    private static OptionImpl<SodiumGameOptions, Boolean> createBooleanOption(String key, Supplier<Boolean> getter, Consumer<Boolean> setter) {
+        return OptionImpl.createBuilder(Boolean.TYPE, PLACEHOLDER)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, key))
                 .setName(Component.translatable("config.itisme." + key + ".name"))
                 .setTooltip(EMPTY)
@@ -235,9 +134,8 @@ public class SodiumIntegration {
                 .build();
     }
 
-    private static OptionImpl<SodiumGameOptions, Integer> createColorOption(
-            String key, Supplier<Integer> getter, Consumer<Integer> setter) {
-        return OptionImpl.createBuilder(Integer.TYPE, sodiumOpts)
+    private static OptionImpl<SodiumGameOptions, Integer> createColorOption(String key, Supplier<Integer> getter, Consumer<Integer> setter) {
+        return OptionImpl.createBuilder(Integer.TYPE, PLACEHOLDER)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, key))
                 .setName(Component.translatable("config.itisme." + key + ".name"))
                 .setTooltip(EMPTY)
@@ -247,10 +145,8 @@ public class SodiumIntegration {
                 .build();
     }
 
-    private static OptionImpl<SodiumGameOptions, Integer> createIntOption(
-            String key, int min, int max, int step,
-            Supplier<Integer> getter, Consumer<Integer> setter) {
-        return OptionImpl.createBuilder(Integer.TYPE, sodiumOpts)
+    private static OptionImpl<SodiumGameOptions, Integer> createIntOption(String key, int min, int max, int step, Supplier<Integer> getter, Consumer<Integer> setter) {
+        return OptionImpl.createBuilder(Integer.TYPE, PLACEHOLDER)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, key))
                 .setName(Component.translatable("config.itisme." + key + ".name"))
                 .setTooltip(EMPTY)
@@ -260,10 +156,8 @@ public class SodiumIntegration {
                 .build();
     }
 
-    private static OptionImpl<SodiumGameOptions, Integer> createDoubleAsIntOption(
-            String key, int min, int max, int step,
-            Supplier<Double> getter, Consumer<Double> setter) {
-        return OptionImpl.createBuilder(Integer.TYPE, sodiumOpts)
+    private static OptionImpl<SodiumGameOptions, Integer> createDoubleAsIntOption(String key, int min, int max, int step, Supplier<Double> getter, Consumer<Double> setter) {
+        return OptionImpl.createBuilder(Integer.TYPE, PLACEHOLDER)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, key))
                 .setName(Component.translatable("config.itisme." + key + ".name"))
                 .setTooltip(EMPTY)
@@ -275,13 +169,7 @@ public class SodiumIntegration {
                 .build();
     }
 
-    private static OptionGroup createOutlineGroup(
-            String prefix,
-            Supplier<Boolean> renderableGetter, Consumer<Boolean> renderableSetter,
-            Supplier<Integer> rGetter, Consumer<Integer> rSetter,
-            Supplier<Integer> gGetter, Consumer<Integer> gSetter,
-            Supplier<Integer> bGetter, Consumer<Integer> bSetter,
-            Supplier<Integer> aGetter, Consumer<Integer> aSetter) {
+    private static OptionGroup createOutlineGroup(String prefix, Supplier<Boolean> renderableGetter, Consumer<Boolean> renderableSetter, Supplier<Integer> rGetter, Consumer<Integer> rSetter, Supplier<Integer> gGetter, Consumer<Integer> gSetter, Supplier<Integer> bGetter, Consumer<Integer> bSetter, Supplier<Integer> aGetter, Consumer<Integer> aSetter) {
         return OptionGroup.createBuilder()
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, prefix + "_group"))
                 .add(createBooleanOption(prefix + "_renderable", renderableGetter, renderableSetter))
@@ -292,18 +180,11 @@ public class SodiumIntegration {
                 .build();
     }
 
-    private static OptionGroup createShadowOutlineGroup(
-            String prefix,
-            Supplier<Boolean> renderableGetter, Consumer<Boolean> renderableSetter,
-            Supplier<Double>  radiusGetter, Consumer<Double>  radiusSetter,
-            Supplier<Integer> rGetter, Consumer<Integer> rSetter,
-            Supplier<Integer> gGetter, Consumer<Integer> gSetter,
-            Supplier<Integer> bGetter, Consumer<Integer> bSetter,
-            Supplier<Integer> aGetter, Consumer<Integer> aSetter) {
+    private static OptionGroup createShadowOutlineGroup(String prefix, Supplier<Boolean> renderableGetter, Consumer<Boolean> renderableSetter, Supplier<Double>  radiusGetter, Consumer<Double>  radiusSetter, Supplier<Integer> rGetter, Consumer<Integer> rSetter, Supplier<Integer> gGetter, Consumer<Integer> gSetter, Supplier<Integer> bGetter, Consumer<Integer> bSetter, Supplier<Integer> aGetter, Consumer<Integer> aSetter) {
         return OptionGroup.createBuilder()
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, prefix + "_group"))
                 .add(createBooleanOption(prefix + "_renderable", renderableGetter, renderableSetter))
-                .add(createDoubleAsIntOption(prefix + "_radius_multiplier", 0, 1000, 5, radiusGetter, radiusSetter))
+                .add(createDoubleAsIntOption(prefix + "_radius_multiplier", 0, 400, 5, radiusGetter, radiusSetter))
                 .add(createColorOption(prefix + "_red",   rGetter, rSetter))
                 .add(createColorOption(prefix + "_green", gGetter, gSetter))
                 .add(createColorOption(prefix + "_blue",  bGetter, bSetter))
@@ -311,18 +192,11 @@ public class SodiumIntegration {
                 .build();
     }
 
-    private static OptionGroup createCustomEntityOutlineGroup(
-            String parsable, @NotNull EntityType<?> entityType, @NotNull String suffix,
-            Map<ResourceLocation, OutlineColor> colorMap, Runnable saveColorAction,
-            @Nullable Object2DoubleMap<ResourceLocation> radiusMap,
-            @Nullable Runnable saveRadiusAction,
-            Supplier<Integer> defaultR, Supplier<Integer> defaultG,
-            Supplier<Integer> defaultB, Supplier<Integer> defaultA) {
-
+    private static OptionGroup createCustomEntityOutlineGroup(String parsable, @NotNull EntityType<?> entityType, @NotNull String suffix, Map<ResourceLocation, OutlineColor> colorMap, Runnable saveColorAction, @Nullable Object2DoubleMap<ResourceLocation> radiusMap, @Nullable Runnable saveRadiusAction, Supplier<Integer> defaultR, Supplier<Integer> defaultG, Supplier<Integer> defaultB, Supplier<Integer> defaultA) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, parsable);
         String s = suffix.isEmpty() ? "" : "_" + suffix;
 
-        OptionImpl<SodiumGameOptions, Boolean> enable = OptionImpl.createBuilder(Boolean.TYPE, sodiumOpts)
+        OptionImpl<SodiumGameOptions, Boolean> enable = OptionImpl.createBuilder(Boolean.TYPE, PLACEHOLDER)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, parsable + s + "_enable"))
                 .setName(entityType.getDescription())
                 .setTooltip(EMPTY)
@@ -341,25 +215,17 @@ public class SodiumIntegration {
         String transKey = suffix.isEmpty() ? "config.itisme.custom_entity_outline" : "config.itisme.custom_entity_" + suffix + "_outline";
         String entityName = entityType.getDescription().getString();
 
-        OptionImpl<SodiumGameOptions, Integer> red   = createEntityColorSlider(
-                parsable + s + "_red",   Component.translatable(transKey + ".red",   entityName),
-                colorMap, id, c -> c.red,   (c, v) -> c.red   = v, saveColorAction);
-        OptionImpl<SodiumGameOptions, Integer> green = createEntityColorSlider(
-                parsable + s + "_green", Component.translatable(transKey + ".green", entityName),
-                colorMap, id, c -> c.green, (c, v) -> c.green = v, saveColorAction);
-        OptionImpl<SodiumGameOptions, Integer> blue  = createEntityColorSlider(
-                parsable + s + "_blue",  Component.translatable(transKey + ".blue",  entityName),
-                colorMap, id, c -> c.blue,  (c, v) -> c.blue  = v, saveColorAction);
-        OptionImpl<SodiumGameOptions, Integer> alpha = createEntityColorSlider(
-                parsable + s + "_alpha", Component.translatable(transKey + ".alpha", entityName),
-                colorMap, id, c -> c.alpha, (c, v) -> c.alpha = v, saveColorAction);
+        OptionImpl<SodiumGameOptions, Integer> red = createEntityColorSlider(parsable + s + "_red", Component.translatable(transKey + ".red", entityName), colorMap, id, color -> color.red, (color, value) -> color.red = value, saveColorAction);
+        OptionImpl<SodiumGameOptions, Integer> green = createEntityColorSlider(parsable + s + "_green", Component.translatable(transKey + ".green", entityName), colorMap, id, color -> color.green, (color, value) -> color.green = value, saveColorAction);
+        OptionImpl<SodiumGameOptions, Integer> blue  = createEntityColorSlider(parsable + s + "_blue", Component.translatable(transKey + ".blue", entityName), colorMap, id, color -> color.blue, (color, value) -> color.blue = value, saveColorAction);
+        OptionImpl<SodiumGameOptions, Integer> alpha = createEntityColorSlider(parsable + s + "_alpha", Component.translatable(transKey + ".alpha", entityName), colorMap, id, color -> color.alpha, (color, value) -> color.alpha = value, saveColorAction);
 
         OptionGroup.Builder groupBuilder = OptionGroup.createBuilder()
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, parsable + s + "_group"))
                 .add(enable).add(red).add(green).add(blue).add(alpha);
 
         if (radiusMap != null && saveRadiusAction != null) {
-            OptionImpl<SodiumGameOptions, Boolean> enableRadius = OptionImpl.createBuilder(Boolean.TYPE, sodiumOpts)
+            OptionImpl<SodiumGameOptions, Boolean> enableRadius = OptionImpl.createBuilder(Boolean.TYPE, PLACEHOLDER)
                     .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, parsable + s + "_radius_enable"))
                     .setName(Component.translatable("config.itisme.custom_entity_shadow_outline.radius_enable", entityName))
                     .setTooltip(EMPTY)
@@ -375,20 +241,17 @@ public class SodiumIntegration {
                     .setImpact(OptionImpact.LOW)
                     .build();
 
-            OptionImpl<SodiumGameOptions, Integer> radiusSlider = OptionImpl.createBuilder(Integer.TYPE, sodiumOpts)
+            OptionImpl<SodiumGameOptions, Integer> radiusSlider = OptionImpl.createBuilder(Integer.TYPE, PLACEHOLDER)
                     .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, parsable + s + "_radius"))
                     .setName(Component.translatable("config.itisme.custom_entity_shadow_outline.radius", entityName))
                     .setTooltip(EMPTY)
-                    .setControl(option -> new SliderControl(option, 0, 1000, 5, ControlValueFormatter.number()))
+                    .setControl(option -> new SliderControl(option, 0, 400, 5, ControlValueFormatter.number()))
                     .setBinding(
                             (options, value) -> {
                                 radiusMap.put(id, value / 100.0);
                                 saveRadiusAction.run();
                             },
-                            options -> (int) Math.round(
-                                    radiusMap.containsKey(id)
-                                            ? radiusMap.getDouble(id) * 100
-                                            : ItIsMeConfig.ENTITY_SHADOW_RADIUS_EXT.get() * 100))
+                            options -> (int) Math.round(radiusMap.containsKey(id) ? radiusMap.getDouble(id) * 100 : ItIsMeConfig.ENTITY_SHADOW_RADIUS_EXT.get() * 100))
                     .setImpact(OptionImpact.LOW)
                     .build();
 
@@ -398,19 +261,16 @@ public class SodiumIntegration {
         return groupBuilder.build();
     }
 
-    private static OptionImpl<SodiumGameOptions, Integer> createEntityColorSlider(
-            String id, Component name,
-            Map<ResourceLocation, OutlineColor> colorMap, ResourceLocation entityId,
-            Function<OutlineColor, Integer> getter, BiConsumer<OutlineColor, Integer> setter,
-            Runnable saveAction) {
-        return OptionImpl.createBuilder(Integer.TYPE, sodiumOpts)
+    private static OptionImpl<SodiumGameOptions, Integer> createEntityColorSlider(String id, Component name, Map<ResourceLocation, OutlineColor> colorMap, ResourceLocation entityId, Function<OutlineColor, Integer> getter, BiConsumer<OutlineColor, Integer> setter, Runnable saveAction) {
+        return OptionImpl.createBuilder(Integer.TYPE, PLACEHOLDER)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, id))
                 .setName(name)
                 .setTooltip(EMPTY)
                 .setControl(option -> new SliderControl(option, 0, 255, 5, ControlValueFormatter.number()))
                 .setBinding(
                         (options, value) -> {
-                            setter.accept(colorMap.getOrDefault(entityId, OutlineColor.getPlaceholder()), value);
+                            colorMap.computeIfAbsent(entityId, key -> OutlineColor.getPlaceholder());
+                            setter.accept(colorMap.get(entityId), value);
                             saveAction.run();
                         },
                         options -> getter.apply(colorMap.getOrDefault(entityId, OutlineColor.getPlaceholder())))
