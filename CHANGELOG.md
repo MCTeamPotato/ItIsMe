@@ -8,3 +8,4 @@
 - Config option to toggle entity outline and entity shadow outline
 # 1.2.0
 - Add config option of outline and shadow outline for attackable entities.
+- I forget them... I'm going crazy about my trillions of code changes and struggling with writing changelog...
