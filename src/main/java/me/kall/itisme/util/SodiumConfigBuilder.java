@@ -1,26 +1,26 @@
 package me.kall.itisme.util;
 
-import me.jellysquid.mods.sodium.client.gui.SodiumGameOptions;
-import me.jellysquid.mods.sodium.client.gui.options.Option;
-import me.jellysquid.mods.sodium.client.gui.options.OptionGroup;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpact;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
-import me.jellysquid.mods.sodium.client.gui.options.control.ControlValueFormatter;
-import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
-import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
-import me.jellysquid.mods.sodium.client.gui.options.storage.SodiumOptionsStorage;
 import me.kall.itisme.ItIsMe;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import org.embeddedt.embeddium.api.options.control.ControlValueFormatter;
+import org.embeddedt.embeddium.api.options.control.SliderControl;
+import org.embeddedt.embeddium.api.options.control.TickBoxControl;
+import org.embeddedt.embeddium.api.options.structure.Option;
+import org.embeddedt.embeddium.api.options.structure.OptionGroup;
+import org.embeddedt.embeddium.api.options.structure.OptionImpact;
+import org.embeddedt.embeddium.api.options.structure.OptionImpl;
+import org.embeddedt.embeddium.impl.gui.EmbeddiumOptions;
+import org.embeddedt.embeddium.impl.gui.options.storage.EmbeddiumOptionsStorage;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 public class SodiumConfigBuilder {
-    private static final SodiumOptionsStorage PLACEHOLDER = new SodiumOptionsStorage();
+    private static final EmbeddiumOptionsStorage PLACEHOLDER = new EmbeddiumOptionsStorage();
 
-    public static OptionImpl<SodiumGameOptions, Integer> intOption(String idPath, Component optionName, Component optionTooltip, int min, int max, int interval, BiConsumer<SodiumGameOptions, Integer> setter, Function<SodiumGameOptions, Integer> getter, OptionImpact optionImpact) {
+    public static OptionImpl<EmbeddiumOptions, Integer> intOption(String idPath, Component optionName, Component optionTooltip, int min, int max, int interval, BiConsumer<EmbeddiumOptions, Integer> setter, Function<EmbeddiumOptions, Integer> getter, OptionImpact optionImpact) {
         return OptionImpl.createBuilder(Integer.TYPE, PLACEHOLDER)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, idPath))
                 .setName(optionName)
@@ -31,7 +31,7 @@ public class SodiumConfigBuilder {
                 .build();
     }
 
-    public static OptionImpl<SodiumGameOptions, Boolean> booleanOption(String idPath, Component optionName, Component optionTooltip, BiConsumer<SodiumGameOptions, Boolean> setter, Function<SodiumGameOptions, Boolean> getter, OptionImpact optionImpact) {
+    public static OptionImpl<EmbeddiumOptions, Boolean> booleanOption(String idPath, Component optionName, Component optionTooltip, BiConsumer<EmbeddiumOptions, Boolean> setter, Function<EmbeddiumOptions, Boolean> getter, OptionImpact optionImpact) {
         return OptionImpl.createBuilder(Boolean.TYPE, PLACEHOLDER)
                 .setId(ResourceLocation.fromNamespaceAndPath(ItIsMe.MOD_ID, idPath))
                 .setName(optionName)
