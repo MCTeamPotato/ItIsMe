@@ -1,6 +1,6 @@
 package me.kall.itisme.integration;
 
-import me.kall.itisme.ItIsMeConfig;
+import me.kall.itisme.config.ItIsMeConfig;
 
 import org.embeddedt.embeddium.impl.gui.EmbeddiumOptions;
 import java.util.function.BiConsumer;

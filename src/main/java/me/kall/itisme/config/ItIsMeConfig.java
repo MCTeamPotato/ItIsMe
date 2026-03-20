@@ -1,8 +1,10 @@
-package me.kall.itisme;
+package me.kall.itisme.config;
 
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.objects.*;
 import me.kall.duplicationless.ext.RegistryEntry;
+import me.kall.itisme.ItIsMe;
+import me.kall.itisme.data.OutlineColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;

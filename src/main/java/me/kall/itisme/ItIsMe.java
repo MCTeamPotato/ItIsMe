@@ -1,5 +1,6 @@
 package me.kall.itisme;
 
+import me.kall.itisme.config.ItIsMeConfig;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
