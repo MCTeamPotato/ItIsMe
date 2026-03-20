@@ -182,9 +182,9 @@ public class ItIsMeConfig {
 
         builder.push("EntityShadowOutlineOverride");
         CUSTOM_SHADOW_RADIUS_EXT = builder.comment("Format: entityResourceLocation;multiplier. For example: [\"minecraft:skeleton;5.0\", \"minecraft:zombie;2.45\"]")
-                .defineList("CustomEntityShadowRadiusMultiplier", Lists.newArrayList(), obj -> obj instanceof String);
+                .defineList("CustomEntityShadowRadiusMultiplier", Lists.newArrayList(), () -> "entityResourceLocation;multiplier", obj -> obj instanceof String);
         CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR = builder.comment("Format: entityResourceLocation;red;green;blue;alpha. For example: [\"minecraft:skeleton;128;255;70;255\", \"minecraft:zombie;60;90;45;255\"]")
-                .defineList("CustomEntityShadowOutline", Lists.newArrayList(), obj -> obj instanceof String);
+                .defineList("CustomEntityShadowOutline", Lists.newArrayList(), () -> "entityResourceLocation;red;green;blue;alpha", obj -> obj instanceof String);
         builder.pop();
 
         builder.pop();
@@ -202,7 +202,7 @@ public class ItIsMeConfig {
         for (String entry : CUSTOM_SHADOW_RADIUS_EXT.get()) {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
-            if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
+            if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).isEmpty()) {
                 LOGGER.warn("Invalid entry {} for custom entity shadow radius in It Is Me config. Skipping.", entry);
                 continue;
             }
@@ -214,7 +214,7 @@ public class ItIsMeConfig {
         for (String entry : CUSTOM_ENTITY_OUTLINE_COLOR.get()) {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
-            if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
+            if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).isEmpty()) {
                 LOGGER.warn("Invalid entry {} for custom entity outline in It Is Me config. Skipping.", entry);
                 continue;
             }
@@ -228,7 +228,7 @@ public class ItIsMeConfig {
         for (String entry : CUSTOM_ENTITY_SHADOW_OUTLINE_COLOR.get()) {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
-            if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
+            if (BuiltInRegistries.ENTITY_TYPE.getOptional(id).isEmpty()) {
                 LOGGER.warn("Invalid entry {} for custom entity shadow outline in It Is Me config. Skipping.", entry);
                 continue;
             }
