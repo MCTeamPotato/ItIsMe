@@ -1,4 +1,4 @@
-package me.kall.itisme.config;
+package me.kall.itisme.integration;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;

@@ -1,6 +1,6 @@
 package me.kall.itisme.mixin;
 
-import me.kall.itisme.ItIsMeConfig;
+import me.kall.itisme.config.ItIsMeConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.LivingEntity;

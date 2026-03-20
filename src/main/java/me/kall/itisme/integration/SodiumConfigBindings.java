@@ -1,7 +1,7 @@
 package me.kall.itisme.integration;
 
 import me.jellysquid.mods.sodium.client.gui.SodiumGameOptions;
-import me.kall.itisme.ItIsMeConfig;
+import me.kall.itisme.config.ItIsMeConfig;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;

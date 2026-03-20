@@ -1,6 +1,7 @@
 package me.kall.itisme;
 
 import me.kall.duplicationless.util.Mods;
+import me.kall.itisme.config.ItIsMeConfig;
 import me.kall.itisme.integration.SodiumIntegration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
