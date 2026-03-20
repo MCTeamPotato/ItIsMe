@@ -32,8 +32,7 @@ public class ItIsMeConfig {
 
     public static final ForgeConfigSpec.IntValue OUTLINE_RENDERABLE_DIST;
 
-    public static final ForgeConfigSpec.BooleanValue PLAYER_OUTLINE_RENDERABLE, BOSS_OUTLINE_RENDERABLE,
-            NEUTRAL_OUTLINE_RENDERABLE, HOSTILE_OUTLINE_RENDERABLE, ENTITY_OUTLINE_RENDERABLE;
+    public static final ForgeConfigSpec.BooleanValue PLAYER_OUTLINE_RENDERABLE, BOSS_OUTLINE_RENDERABLE, NEUTRAL_OUTLINE_RENDERABLE, HOSTILE_OUTLINE_RENDERABLE, ENTITY_OUTLINE_RENDERABLE;
 
     public static final ForgeConfigSpec.IntValue PLAYER_OUTLINE_RED, PLAYER_OUTLINE_GREEN, PLAYER_OUTLINE_BLUE, PLAYER_OUTLINE_ALPHA;
     public static final ForgeConfigSpec.IntValue BOSS_OUTLINE_RED, BOSS_OUTLINE_GREEN, BOSS_OUTLINE_BLUE, BOSS_OUTLINE_ALPHA;
@@ -46,11 +45,9 @@ public class ItIsMeConfig {
 
     public static final ForgeConfigSpec.ConfigValue<List<? extends String>> CUSTOM_ENTITY_OUTLINE_COLOR;
 
-    public static final ForgeConfigSpec.BooleanValue PLAYER_SHADOW_OUTLINE_RENDERABLE, BOSS_SHADOW_OUTLINE_RENDERABLE,
-            NEUTRAL_SHADOW_OUTLINE_RENDERABLE, HOSTILE_SHADOW_OUTLINE_RENDERABLE, ENTITY_SHADOW_OUTLINE_RENDERABLE;
+    public static final ForgeConfigSpec.BooleanValue PLAYER_SHADOW_OUTLINE_RENDERABLE, BOSS_SHADOW_OUTLINE_RENDERABLE, NEUTRAL_SHADOW_OUTLINE_RENDERABLE, HOSTILE_SHADOW_OUTLINE_RENDERABLE, ENTITY_SHADOW_OUTLINE_RENDERABLE;
 
-    public static final ForgeConfigSpec.DoubleValue PLAYER_SHADOW_RADIUS_EXT, BOSS_SHADOW_RADIUS_EXT,
-            NEUTRAL_SHADOW_RADIUS_EXT, HOSTILE_SHADOW_RADIUS_EXT, ENTITY_SHADOW_RADIUS_EXT;
+    public static final ForgeConfigSpec.DoubleValue PLAYER_SHADOW_RADIUS_EXT, BOSS_SHADOW_RADIUS_EXT, NEUTRAL_SHADOW_RADIUS_EXT, HOSTILE_SHADOW_RADIUS_EXT, ENTITY_SHADOW_RADIUS_EXT;
 
     public static final ForgeConfigSpec.IntValue PLAYER_SHADOW_OUTLINE_RED, PLAYER_SHADOW_OUTLINE_GREEN, PLAYER_SHADOW_OUTLINE_BLUE, PLAYER_SHADOW_OUTLINE_ALPHA;
     public static final ForgeConfigSpec.IntValue BOSS_SHADOW_OUTLINE_RED, BOSS_SHADOW_OUTLINE_GREEN, BOSS_SHADOW_OUTLINE_BLUE, BOSS_SHADOW_OUTLINE_ALPHA;
@@ -204,7 +201,7 @@ public class ItIsMeConfig {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
             if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
-                LOGGER.warn("Invalid entry {} for custom entity shadow radius in Light Tweak config. Skipping.", entry);
+                LOGGER.warn("Invalid entry {} for custom entity shadow radius in It Is Me config. Skipping.", entry);
                 continue;
             }
             ENTITY_SHADOW_RADIUS_MAP.put(id, Double.parseDouble(parts[1]));
@@ -216,7 +213,7 @@ public class ItIsMeConfig {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
             if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
-                LOGGER.warn("Invalid entry {} for custom entity outline in Light Tweak config. Skipping.", entry);
+                LOGGER.warn("Invalid entry {} for custom entity outline in It Is Me config. Skipping.", entry);
                 continue;
             }
             ENTITY_COLOR_MAP.put(id, new OutlineColor(
@@ -230,7 +227,7 @@ public class ItIsMeConfig {
             String[] parts = entry.split(";");
             ResourceLocation id = ResourceLocation.parse(parts[0]);
             if (ForgeRegistries.ENTITY_TYPES.getValue(id) == null) {
-                LOGGER.warn("Invalid entry {} for custom entity shadow outline in Light Tweak config. Skipping.", entry);
+                LOGGER.warn("Invalid entry {} for custom entity shadow outline in It Is Me config. Skipping.", entry);
                 continue;
             }
             ENTITY_SHADOW_COLOR_MAP.put(id, new OutlineColor(
