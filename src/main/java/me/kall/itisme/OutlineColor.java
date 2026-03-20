@@ -1,5 +1,8 @@
 package me.kall.itisme;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 public class OutlineColor {
     public int red;
     public int green;
@@ -11,5 +14,14 @@ public class OutlineColor {
         this.green = green;
         this.blue = blue;
         this.alpha = alpha;
+    }
+
+    @Contract(" -> new")
+    public static @NotNull OutlineColor getPlaceholder() {
+        return new OutlineColor(0, 0, 0, 0);
+    }
+
+    public String toString() {
+        return this.red + ";" + this.green + ";" + this.blue + ";" + this.alpha;
     }
 }
