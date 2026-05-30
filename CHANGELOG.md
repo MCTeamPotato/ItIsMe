@@ -9,3 +9,7 @@
 # 1.2.0
 - Add config option of outline and shadow outline for attackable entities.
 - I forget them... I'm going crazy about my trillions of code changes and struggling with writing changelog...
+# 1.3.0
+- No longer compatible with embeddium
+- Compatible with Sodium and Iris
+- Remove video setting options

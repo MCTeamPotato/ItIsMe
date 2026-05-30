@@ -24,7 +24,7 @@ public class MixinDepInitializer implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, @NotNull String mixinClassName) {
-        if (mixinClassName.contains("SodiumEntityRenderDispatcherMixin")) return Mods.isLoaded("embeddium") || Mods.isLoaded("sodium");
+        if (mixinClassName.contains("SodiumEntityRenderDispatcherMixin")) return Mods.isLoaded("sodium");
         if (mixinClassName.contains("AcceleratedEntityShadowRendererMixin")) return Mods.isLoaded("acceleratedrendering");
         return true;
     }

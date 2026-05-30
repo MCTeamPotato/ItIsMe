@@ -2,7 +2,7 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 import net.darkhax.curseforgegradle.UploadArtifact
 
 plugins {
-    id 'dev.architectury.loom' version '1.10-SNAPSHOT'
+    id 'dev.architectury.loom' version '1.13-SNAPSHOT'
     id "com.gradleup.shadow" version "8.3.9"
     id 'net.darkhax.curseforgegradle' version '1.1.+'
 }
@@ -49,6 +49,10 @@ loom {
 
 repositories {
     maven { url = "https://maven.bawnorton.com/releases" }
+    maven {
+        name "CaffeineMC"
+        url "https://maven.caffeinemc.net/releases" // or /snapshots
+    }
     maven { name = "ParchmentMC";    url = 'https://maven.parchmentmc.org' }
     maven { name = "MinecraftForge"; url = "https://files.minecraftforge.net/maven/" }
     maven { name = "NeoForged";      url = 'https://maven.neoforged.net/releases' }
@@ -89,16 +93,11 @@ dependencies {
     }
 
     modImplementation("curse.maven:accelerated-rendering-1314021:7342942")
-    if (!isNeo) shadow(annotationProcessor("io.github.llamalad7:mixinextras-common:${project.mixinextras_version}"))
     shadow(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.1"))
 
-    modImplementation("curse.maven:duplicationless-1380105:${versionInfo.duplicationless}")
-
-    if (minecraft_version == "1.21.11") {
-        modImplementation("net.caffeinemc:sodium-neoforge-mod:0.8.3-SNAPSHOT+mc1.21.11-build.823")
-    } else {
-        modImplementation("curse.maven:embeddium-908741:${versionInfo.embeddium}")
-    }
+    modImplementation("curse.maven:duplicationless-1380105:7488559")
+    modImplementation("net.caffeinemc:sodium-neoforge-mod:0.8.12-alpha.4+mc1.21.1")
+    modImplementation("curse.maven:irisshaders-455508:6661598")
 }
 
 processResources {
